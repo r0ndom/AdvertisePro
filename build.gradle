@@ -13,9 +13,14 @@ ext {
 }
 
 dependencies {
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.37'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.3.0'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.2.3'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
     compile group: 'org.springframework', name:'spring-webmvc', version: springVersion
     compile group: 'org.springframework', name:'spring-context', version: springVersion
     compile group: 'org.springframework', name:'spring-core', version: springVersion
     compile group: 'org.springframework', name:'spring-beans', version: springVersion
+    compile group: 'org.springframework', name:'spring-jdbc', version: springVersion
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
