@@ -6,4 +6,9 @@
     <select id="getUser" resultType="User">
         select * from users where id = #{id}
     </select>
+
+    <insert id="createUser" parameterType="User">
+        insert into users(id, email, password) values (#{id}, #{email}, #{password});
+    </insert>
+
 </mapper>

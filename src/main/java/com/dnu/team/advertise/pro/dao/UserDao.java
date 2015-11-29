@@ -17,7 +17,7 @@ public class UserDao {
     private SqlSession session;
 
     public void create(User user) {
-
+        session.insert("UserMapper.createUser", user);
     }
 
     public User get(Integer id) {
