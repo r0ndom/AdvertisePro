@@ -34,10 +34,10 @@
                 <h4 class="modal-title" id="myModalLabel">
                     <c:choose>
                         <c:when test="${param.action == 'create'}">
-                            <spring:message code="messages.createUser"/>
+                            Создать пользователи
                         </c:when>
                         <c:when test="${param.action == 'update'}">
-                            <spring:message code="messages.updateUser"/>
+                            Редактировать пользователя
                         </c:when>
                     </c:choose>
                 </h4>
@@ -48,7 +48,7 @@
                     <form:hidden path="id"/>
                     <div class="row" <c:if test="${param.action == 'update'}">hidden="hidden"</c:if>>
                         <div class="col-md-3">
-                            <label><spring:message code="messages.username"/></label>
+                            <label>Логин</label>
                         </div>
                         <div class="col-md-9">
                             <form:input id="username" cssClass="form-control" path="username" required="required"/>
@@ -61,7 +61,7 @@
                 <div class="modal-footer">
                     <div class="row"><div class="col-md-12">
                         <input class="btn btn-success" style="width: 100%; height: 40px"
-                               value="<spring:message code="messages.submit"/>" type="submit"></div></div>
+                               value="Создать" type="submit"></div></div>
                 </div>
             </form:form>
         </div>

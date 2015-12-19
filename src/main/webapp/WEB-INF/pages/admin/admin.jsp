@@ -74,6 +74,14 @@
 
     </div>
 
+    <%--<jsp:include page="/WEB-INF/pages/admin/createUpdateUserModal.jsp">--%>
+        <%--<jsp:param name="action" value="create"/>--%>
+    <%--</jsp:include>--%>
+    <%--<jsp:include page="/WEB-INF/pages/admin/createUpdateUserModal.jsp">--%>
+        <%--<jsp:param name="action" value="update"/>--%>
+    <%--</jsp:include>--%>
+    <%--<jsp:include page="/WEB-INF/pages/admin/deleteUserModal.jsp"/>--%>
+
 </div>
 
 <script src="<c:url value="/resources/js/jquery.js"/>"></script>
@@ -84,22 +92,24 @@
     $(document).ready(function() {
         $('#menu').find('li').click(function() {
             var activeLiIndex = $(this).index();
+            var pageContent = $("#pageContent");
+            var tableContent = $("#tableContent");
             switch (activeLiIndex) {
                 case 0:
-                    $("#pageContent").load("/userFilter");
-                    $("#tableContent").load("/userTable");
+                    pageContent.load("/userFilter");
+                    tableContent.load("/userTable");
                     break;
                 case 1:
-                    $("#pageContent").load("/ordersFilter");
-                    $("#tableContent").load("/ordersTable");
+                    pageContent.load("/ordersFilter");
+                    tableContent.load("/ordersTable");
                     break;
                 case 2:
-                    $("#pageContent").load("/servicesFilter");
-                    $("#tableContent").load("/servicesTable");
+                    pageContent.load("/servicesFilter");
+                    tableContent.load("/servicesTable");
                     break;
                 case 3:
-                    $("#pageContent").load("/priceListFilter");
-                    $("#tableContent").load("/priceListTable");
+                    pageContent.load("/priceListFilter");
+                    tableContent.load("/priceListTable");
                     break;
             }
         });

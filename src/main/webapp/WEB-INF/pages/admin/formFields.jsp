@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-md-3">
-        <label><spring:message code="messages.email"/></label>
+        <label>Email</label>
     </div>
     <div class="col-md-9">
         <form:input id="email" cssClass="form-control" path="email" required="required"/>
@@ -12,7 +12,7 @@
 <p></p>
 <div class="row">
     <div class="col-md-3">
-        <label><spring:message code="messages.password"/></label>
+        <label>Пароль</label>
     </div>
     <div class="col-md-9">
         <form:input id="password" cssClass="form-control" path="password" required="required"/>
@@ -21,7 +21,7 @@
 <p></p>
 <div class="row">
     <div class="col-md-3">
-        <label><spring:message code="messages.name"/></label>
+        <label>Имя</label>
     </div>
     <div class="col-md-9">
         <form:input id="name" cssClass="form-control" path="name" required="required"/>
@@ -30,7 +30,7 @@
 <p></p>
 <div class="row">
     <div class="col-md-3">
-        <label><spring:message code="messages.surname"/></label>
+        <label>Фамилия</label>
     </div>
     <div class="col-md-9">
         <form:input id="surname" cssClass="form-control" path="surname" required="required"/>
@@ -39,13 +39,13 @@
 <p></p>
 <div class="row">
     <div class="col-md-3">
-        <label><spring:message code="messages.phone"/></label>
+        <label>Номер телефона</label>
     </div>
     <div class="col-md-9">
         <form:input id="number" cssClass="form-control" path="number" required="required" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"/>
         <span>
-            <p><spring:message code="messages.example"/></p>
-            <spring:message code="messages.numbers"/>
+            <p>Пример сообщения</p>
+            Пример телефона
         </span>
     </div>
 </div>
@@ -53,7 +53,7 @@
 
 <div class="row">
     <div class="col-md-3">
-        <label><spring:message code="messages.address"/></label>
+        <label>Адрес</label>
     </div>
     <div class="col-md-9">
         <form:input id="address" cssClass="form-control" path="address" required="required"/>
@@ -62,7 +62,7 @@
 <p></p>
 <div class="row">
     <div class="col-md-3">
-        <label><spring:message code="messages.gender"/></label>
+        <label>Пол</label>
     </div>
     <div class="col-md-9">
         <form:select id="gender" cssClass="form-control" path="gender" required="required" items="${genders}" itemLabel="viewName"/>
@@ -71,7 +71,7 @@
 <p></p>
 <div class="row">
     <div class="col-md-3">
-        <label><spring:message code="messages.role"/></label>
+        <label>Роль</label>
     </div>
     <div class="col-md-9">
         <form:select id="authorities" cssClass="form-control" path="authorities" required="required" items="${roles}" itemLabel="roleViewName"/>
