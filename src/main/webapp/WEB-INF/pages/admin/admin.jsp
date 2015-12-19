@@ -45,14 +45,14 @@
                     <a href="#"> Пользователи</a>
                 </li>
                 <li>
-                    <a href="#"> Заказы</a>
-                </li>
-                <li>
                     <a href="#"> Услуги</a>
                 </li>
                 <li>
                     <a href="#"> Прайс-лист</a>
                 </li>
+                <%--<li>--%>
+                    <%--<a href="#"> Заказы</a>--%>
+                <%--</li>--%>
             </ul>
         </div>
 
@@ -100,16 +100,16 @@
                     tableContent.load("/userTable");
                     break;
                 case 1:
-                    pageContent.load("/ordersFilter");
-                    tableContent.load("/ordersTable");
-                    break;
-                case 2:
                     pageContent.load("/servicesFilter");
                     tableContent.load("/servicesTable");
                     break;
-                case 3:
+                case 2:
                     pageContent.load("/priceListFilter");
                     tableContent.load("/priceListTable");
+                    break;
+                case 3:
+                    pageContent.load("/ordersFilter");
+                    tableContent.load("/ordersTable");
                     break;
             }
         });
