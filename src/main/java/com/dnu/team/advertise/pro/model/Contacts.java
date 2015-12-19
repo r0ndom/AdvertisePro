@@ -4,10 +4,10 @@ public class Contacts {
     private Long id;
     private Long userId;
     private String city;
-    private String postCode;
+    private Integer postCode;
     private String street;
-    private String house;
-    private String flat;
+    private Integer house;
+    private Integer flat;
     private String phone;
     private String email;
 
@@ -35,11 +35,11 @@ public class Contacts {
         this.city = city;
     }
 
-    public String getPostCode() {
+    public Integer getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(String postCode) {
+    public void setPostCode(Integer postCode) {
         this.postCode = postCode;
     }
 
@@ -51,19 +51,19 @@ public class Contacts {
         this.street = street;
     }
 
-    public String getHouse() {
+    public Integer getHouse() {
         return house;
     }
 
-    public void setHouse(String house) {
+    public void setHouse(Integer house) {
         this.house = house;
     }
 
-    public String getFlat() {
+    public Integer getFlat() {
         return flat;
     }
 
-    public void setFlat(String flat) {
+    public void setFlat(Integer flat) {
         this.flat = flat;
     }
 
