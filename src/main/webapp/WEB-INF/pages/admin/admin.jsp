@@ -32,7 +32,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-power-off"></i> Выйти</a>
+                    <a href="<c:url value="/login"/>"><i class="fa fa-fw fa-power-off"></i> Выйти</a>
                 </li>
             </ul>
         </li>
@@ -43,9 +43,9 @@
             <li class="active">
                 <a href=""> Пользователи</a>
             </li>
-            <li>
-                <a href=""> Реклама</a>
-            </li>
+            <%--<li>--%>
+                <%--<a href=""> Реклама</a>--%>
+            <%--</li>--%>
         </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -56,13 +56,6 @@
 <div class="container-fluid">
     <jsp:include page="/WEB-INF/pages/admin/searchFilter.jsp"/>
     <jsp:include page="/WEB-INF/pages/admin/table.jsp"/>
-
-    <div style="text-align: center; margin-top: 50px; margin-bottom: 90px">
-        <button id="addUser" class="btn btn-primary"
-                data-toggle="modal" data-target="#createUserModal">
-            Создать пользователя
-        </button>
-    </div>
 </div>
 
 </div>

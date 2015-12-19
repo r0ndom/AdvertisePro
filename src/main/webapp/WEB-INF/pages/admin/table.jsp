@@ -37,3 +37,10 @@
         </tr>
     </tbody>
 </table>
+
+<div style="text-align: center; margin-top: 50px; margin-bottom: 90px">
+    <button id="addUser" class="btn btn-primary"
+            data-toggle="modal" data-target="#createUserModal">
+        Создать пользователя
+    </button>
+</div>
