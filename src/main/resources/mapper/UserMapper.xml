@@ -3,24 +3,100 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dnu.team.advertise.pro.dao.mapper.UserMapper">
-    <select id="get" resultType="User">
-        select * from USERS where id = #{id};
+
+    <resultMap id="getUserResultMap" type="com.dnu.team.advertise.pro.model.User">
+
+        <id property="id" column="ID"/>
+        <result property="firstName" column="FIRST_NAME"/>
+        <result property="lastName" column="LAST_NAME"/>
+        <result property="firstName" column="MIDDLE_NAME"/>
+        <result property="authorities" column="ROLE"/>
+
+        <association property="contacts" javaType="com.dnu.team.advertise.pro.model.Contacts">
+            <id property="id" column="CONTACT_ID"/>
+            <result property="userId" column="ID"/>
+            <result property="city" column="CITY"/>
+            <result property="postCode" column="POST_CODE"/>
+            <result property="street" column="STREET"/>
+            <result property="house" column="HOUSE"/>
+            <result property="flat" column="FLAT"/>
+            <result property="phone" column="PHONE"/>
+            <result property="email" column="EMAIL"/>
+        </association>
+
+        <association property="credentials" javaType="com.dnu.team.advertise.pro.model.Credentials">
+            <id property="login" column="LOGIN"/>
+            <result property="password" column="PASSWORD"/>
+            <result property="userId" column="ID"/>
+        </association>
+
+    </resultMap>
+
+
+    <select id="get" resultMap="getUserResultMap">
+        SELECT
+          users.ID as ID,
+          users.FIRST_NAME as FIRST_NAME,
+          users.LAST_NAME as LAST_NAME,
+          users.MIDDLE_NAME as MIDDLE_NAME,
+          users.ROLE as ROLE,
+          contacts.ID as CONTACT_ID,
+          contacts.CITY as CITY,
+          contacts.POST_CODE as POST_CODE,
+          contacts.STREET as STREET,
+          contacts.HOUSE as HOUSE,
+          contacts.FLAT as FLAT,
+          contacts.PHONE as PHONE,
+          contacts.EMAIL as EMAIL,
+          credentials.LOGIN as LOGIN,
+          credentials.PASSWORD as PASSWORD
+        FROM USERS users
+          INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
+          INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID
+        WHERE users.id = #{id}
     </select>
 
-    <select id="findByEmail" resultType="User">
-        select * from USERS where email = #{email};
+    <select id="findByEmail" resultMap="getUserResultMap">
+        SELECT
+          users.ID as ID,
+          users.FIRST_NAME as FIRST_NAME,
+          users.LAST_NAME as LAST_NAME,
+          users.MIDDLE_NAME as MIDDLE_NAME,
+          users.ROLE as ROLE,
+          contacts.ID as CONTACT_ID,
+          contacts.CITY as CITY,
+          contacts.POST_CODE as POST_CODE,
+          contacts.STREET as STREET,
+          contacts.HOUSE as HOUSE,
+          contacts.FLAT as FLAT,
+          contacts.PHONE as PHONE,
+          contacts.EMAIL as EMAIL,
+          credentials.LOGIN as LOGIN,
+          credentials.PASSWORD as PASSWORD
+        FROM USERS users
+          INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
+          INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID
+        WHERE users.id = #{contacts.email}
     </select>
 
     <insert id="create" parameterType="User">
-        insert into USERS(id, email, password) values (#{id}, #{email}, #{password});
+        insert into USERS(FIRST_NAME, LAST_NAME, MIDDLE_NAME, ROLE) values (#{firstName}, #{lastName}, #{middleName}, #{authorities});
+        insert into CONTACTS(USER_ID, CITY, POST_CODE, STREET, HOUSE, FLAT, PHONE, EMAIL) values
+          (#{id}, #{contacts.city}, #{contacts.postCode}, #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email});
+        insert into CREDENTIALS(LOGIN, PASSWORD, USER_ID) values (#{credentials.login}, #{credentials.password}, #{id});
     </insert>
 
     <update id="update" parameterType="User">
-        update USERS set password=#{password} where email = #{email};
+        update USERS set FIRST_NAME=#{firstName}, LAST_NAME=#{lastName}, MIDDLE_NAME=#{middleName}, ROLE=#{authorities},  where ID = #{id};
+        update CONTACTS set USER_ID=#{id}, CITY=#{contacts.city}, POST_CODE=#{contacts.postCode},
+          STREET=#{contacts.street}, HOUSE=#{contacts.house}, FLAT=#{contacts.flat}, PHONE=#{contacts.phone}, EMAIL=#{contacts.email},where USER_ID = #{id};
+        update CREDENTIALS set LOGIN=#{credentials.login}, PASSWORD=#{credentials.password}, USER_ID=#{id}  where USER_ID = #{id};
     </update>
 
     <delete id="delete" parameterType="User">
-        delete from USERS where id=#{id};
+        delete from USERS where ID=#{id};
+        delete from CONTACTS where USER_ID=#{id};
+        delete from CREDENTIALS where USER_ID=#{id};
     </delete>
 
 </mapper>
