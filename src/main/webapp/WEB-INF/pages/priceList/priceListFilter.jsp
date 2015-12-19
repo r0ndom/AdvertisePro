@@ -5,21 +5,31 @@
 <form>
     <div class="col-sm-12">
         <div class="row">
-            <div class="col-sm-6 form-group">
+            <div class="col-sm-4 form-group">
                 <label>Город</label>
                 <input type="text" placeholder="Город" class="form-control" id="city">
             </div>
-            <div class="col-sm-6 form-group">
+            <div class="col-sm-4 form-group">
                 <label>Район</label>
                 <input type="text" placeholder="Район" class="form-control" id="district">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 form-group">
+            <div class="col-sm-4 form-group">
                 <label>Координаты</label>
                 <input type="text" placeholder="Координаты" class="form-control" id="coordinates">
             </div>
-            <div class="col-sm-6 form-group">
+        </div>
+        <div class="row">
+            <div class="col-sm-1 form-group">
+                <label style="color: #ffffff">1</label>
+                <select class="form-control">
+                    <option><</option>
+                    <option><=</option>
+                    <option>></option>
+                    <option>>=</option>
+                    <option>=</option>
+                </select>
+            </div>
+            <div class="col-sm-3 form-group">
                 <label>Цена</label>
                 <input type="text" placeholder="Цена размещения" class="form-control" id="price">
             </div>
