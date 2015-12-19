@@ -21,6 +21,14 @@ public class User implements UserDetails {
     public User() {
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public String getFirstName() {
         return firstName;
     }

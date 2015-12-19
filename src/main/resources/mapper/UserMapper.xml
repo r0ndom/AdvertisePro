@@ -10,7 +10,7 @@
         <result property="firstName" column="FIRST_NAME"/>
         <result property="lastName" column="LAST_NAME"/>
         <result property="firstName" column="MIDDLE_NAME"/>
-        <result property="role" column="ROLE" javaType="com.dnu.team.advertise.pro.model.Role"/>
+        <result property="role" column="ROLE" javaType="com.dnu.team.advertise.pro.model.Role" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
 
         <association property="contacts" javaType="com.dnu.team.advertise.pro.model.Contacts">
             <id property="id" column="CONTACT_ID"/>
@@ -81,14 +81,14 @@
     </select>
 
     <insert id="create" parameterType="User">
-        insert into USERS(FIRST_NAME, LAST_NAME, MIDDLE_NAME, ROLE) values (#{firstName}, #{lastName}, #{middleName}, #{authorities});
+        insert into USERS(FIRST_NAME, LAST_NAME, MIDDLE_NAME, ROLE) values (#{firstName}, #{lastName}, #{middleName}, #{role});
         insert into CONTACTS(USER_ID, CITY, POST_CODE, STREET, HOUSE, FLAT, PHONE, EMAIL) values
           (#{id}, #{contacts.city}, #{contacts.postCode}, #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email});
         insert into CREDENTIALS(LOGIN, PASSWORD, USER_ID) values (#{credentials.login}, #{credentials.password}, #{id});
     </insert>
 
     <update id="update" parameterType="User">
-        update USERS set FIRST_NAME=#{firstName}, LAST_NAME=#{lastName}, MIDDLE_NAME=#{middleName}, ROLE=#{authorities},  where ID = #{id};
+        update USERS set FIRST_NAME=#{firstName}, LAST_NAME=#{lastName}, MIDDLE_NAME=#{middleName}, ROLE=#{role},  where ID = #{id};
         update CONTACTS set USER_ID=#{id}, CITY=#{contacts.city}, POST_CODE=#{contacts.postCode},
           STREET=#{contacts.street}, HOUSE=#{contacts.house}, FLAT=#{contacts.flat}, PHONE=#{contacts.phone}, EMAIL=#{contacts.email},where USER_ID = #{id};
         update CREDENTIALS set LOGIN=#{credentials.login}, PASSWORD=#{credentials.password}, USER_ID=#{id}  where USER_ID = #{id};
