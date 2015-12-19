@@ -10,7 +10,7 @@
         <result property="firstName" column="FIRST_NAME"/>
         <result property="lastName" column="LAST_NAME"/>
         <result property="firstName" column="MIDDLE_NAME"/>
-        <result property="authorities" column="ROLE"/>
+        <result property="role" column="ROLE" javaType="com.dnu.team.advertise.pro.model.Role">
 
         <association property="contacts" javaType="com.dnu.team.advertise.pro.model.Contacts">
             <id property="id" column="CONTACT_ID"/>
@@ -29,6 +29,7 @@
             <result property="password" column="PASSWORD"/>
             <result property="userId" column="ID"/>
         </association>
+
 
     </resultMap>
 

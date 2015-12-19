@@ -16,7 +16,7 @@ public class User implements UserDetails {
 
     private Contacts contacts;
     private Credentials credentials;
-    private Set<Role> authorities;
+    private Role role;
 
     public User() {
     }
@@ -72,10 +72,9 @@ public class User implements UserDetails {
 
     @Override
     public Set<Role> getAuthorities() {
-        if (authorities == null) {
-            this.authorities = new HashSet<Role>();
-        }
-        return authorities;
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
+        return roles;
     }
 
     @Override
