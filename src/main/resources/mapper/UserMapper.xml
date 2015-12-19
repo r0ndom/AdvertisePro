@@ -76,7 +76,7 @@
         FROM USERS users
           INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
           INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID
-        WHERE users.id = #{contacts.email}
+        WHERE contacts.EMAIL = #{email}
     </select>
 
     <insert id="create" parameterType="User">
