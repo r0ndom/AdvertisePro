@@ -1,4 +1,4 @@
-package com.dnu.team.advertise.pro.controller;
+package com.dnu.team.advertise.pro.controller.registration;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,15 +6,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
-
-    private static final String ADMIN = "admin/admin";
+@RequestMapping("/registration")
+public class RegistrationController {
+    private static final String REGISTRATION = "registration/registration";
 
     @RequestMapping(method = RequestMethod.GET)
-    ModelAndView show() {
+    ModelAndView registration() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName(ADMIN);
+        mav.setViewName(REGISTRATION);
         return mav;
     }
 }

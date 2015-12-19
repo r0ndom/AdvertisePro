@@ -29,8 +29,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Удалить</a></li>
                         <li><a href="#">Редактировать</a></li>
+                        <li><a href="#">Удалить</a></li>
                     </ul>
                 </div>
             </td>

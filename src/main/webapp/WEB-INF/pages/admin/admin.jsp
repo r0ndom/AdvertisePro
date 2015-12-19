@@ -12,17 +12,14 @@
 
     <link href="<c:url value="/resources/css/sb-admin.css"/>" rel="stylesheet">
 
-    <link href="<c:url value="/resources/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
 <div id="wrapper">
 
-<!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-    <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Логин <b class="caret"></b></a>
@@ -37,36 +34,61 @@
             </ul>
         </li>
     </ul>
-    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav side-nav">
-            <li class="active">
-                <a href=""> Пользователи</a>
+        <ul class="nav navbar-nav side-nav" id="menu">
+            <li>
+                <a href="#"> Пользователи</a>
             </li>
-            <%--<li>--%>
-                <%--<a href=""> Реклама</a>--%>
-            <%--</li>--%>
+            <li>
+                <a href="#"> Реклама</a>
+            </li>
         </ul>
     </div>
-    <!-- /.navbar-collapse -->
+
 </nav>
 
 <div id="page-wrapper">
 
-<div class="container-fluid">
-    <jsp:include page="/WEB-INF/pages/admin/searchFilter.jsp"/>
-    <jsp:include page="/WEB-INF/pages/admin/table.jsp"/>
-</div>
+    <div class="container-fluid">
+
+        <div id="pageContent">
+
+        </div>
+
+        <div id="tableContent">
+
+        </div>
+
+    </div>
 
 </div>
 
 </div>
 
-<!-- jQuery -->
 <script src="<c:url value="/resources/js/jquery.js"/>"></script>
 
-<!-- Bootstrap Core JavaScript -->
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#menu').find('li').click(function() {
+            var activeLiIndex = $(this).index();
+            switch (activeLiIndex) {
+                case 0:
+                    $("#pageContent").load("/adminFilter");
+                    $("#tableContent").load("/adminTable");
+                    break;
+                case 1:
+                    break;
+            }
+        });
+
+        $("#pageContent").load("/adminFilter");
+        $("#tableContent").load("/adminTable");
+    });
+</script>
+
 </body>
+
 </html>

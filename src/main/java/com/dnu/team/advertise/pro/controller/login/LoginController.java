@@ -1,4 +1,4 @@
-package com.dnu.team.advertise.pro.controller;
+package com.dnu.team.advertise.pro.controller.login;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
