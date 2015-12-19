@@ -6,7 +6,7 @@
 <html>
 
 <head>
-    <title>Страница администратора</title>
+    <title>Администратор</title>
 
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
 
@@ -18,51 +18,61 @@
 
 <div id="wrapper">
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-    <ul class="nav navbar-right top-nav">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Логин <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-user"></i> Профиль</a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="<c:url value="/login"/>"><i class="fa fa-fw fa-power-off"></i> Выйти</a>
-                </li>
-            </ul>
-        </li>
-    </ul>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="<c:url value="/admin"/>">Администратор</a>
+        </div>
 
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav side-nav" id="menu">
-            <li>
-                <a href="#"> Пользователи</a>
-            </li>
-            <li>
-                <a href="#"> Реклама</a>
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Логин <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-user"></i> Профиль</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="<c:url value="/login"/>"><i class="fa fa-fw fa-power-off"></i> Выйти</a>
+                    </li>
+                </ul>
             </li>
         </ul>
-    </div>
 
-</nav>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav" id="menu">
+                <li>
+                    <a href="#"> Пользователи</a>
+                </li>
+                <li>
+                    <a href="#"> Заказы</a>
+                </li>
+                <li>
+                    <a href="#"> Услуги</a>
+                </li>
+                <li>
+                    <a href="#"> Прайс-лист</a>
+                </li>
+            </ul>
+        </div>
 
-<div id="page-wrapper">
+    </nav>
 
-    <div class="container-fluid">
+    <div id="page-wrapper">
 
-        <div id="pageContent">
+        <div class="container-fluid">
+
+            <div id="pageContent">
+
+            </div>
+
+            <div id="tableContent">
+
+            </div>
 
         </div>
 
-        <div id="tableContent">
-
-        </div>
-
     </div>
-
-</div>
 
 </div>
 
@@ -76,16 +86,25 @@
             var activeLiIndex = $(this).index();
             switch (activeLiIndex) {
                 case 0:
-                    $("#pageContent").load("/adminFilter");
-                    $("#tableContent").load("/adminTable");
+                    $("#pageContent").load("/userFilter");
+                    $("#tableContent").load("/userTable");
                     break;
                 case 1:
+                    $("#pageContent").load("/ordersFilter");
+                    $("#tableContent").load("/ordersTable");
+                    break;
+                case 2:
+                    $("#pageContent").load("/servicesFilter");
+                    $("#tableContent").load("/servicesTable");
+                    break;
+                case 3:
+                    $("#pageContent").load("/priceListFilter");
+                    $("#tableContent").load("/priceListTable");
                     break;
             }
         });
-
-        $("#pageContent").load("/adminFilter");
-        $("#tableContent").load("/adminTable");
+        $("#pageContent").load("/userFilter");
+        $("#tableContent").load("/userTable");
     });
 </script>
 

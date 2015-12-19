@@ -5,13 +5,11 @@
 <form>
     <div class="col-sm-12">
         <div class="row">
-            <div class="col-sm-12 form-group">
+            <div class="col-sm-6 form-group">
                 <label>Логин</label>
                 <input type="text" placeholder="Логин" class="form-control" id="login">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 form-group">
+            <div class="col-sm-6 form-group">
                 <label>Email</label>
                 <input type="text" placeholder="Email" class="form-control" id="email">
             </div>

@@ -4,6 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <tag:layout>
+    <title>Вход</title>
 
     <script>
         function showPasswordLogin() {

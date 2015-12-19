@@ -1,8 +1,5 @@
 package com.dnu.team.advertise.pro.model;
 
-/**
- * Created by Mike on 12/19/2015.
- */
 public class Contacts {
     private Long id;
     private Long userId;
