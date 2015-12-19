@@ -7,9 +7,6 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-/**
- * Created by Mike on 11/29/2015.
- */
 @Repository
 public class UserDao {
 
@@ -25,10 +22,14 @@ public class UserDao {
     }
 
     public void update(User user) {
-
+        session.update("UserMapper.updateUser", user);
     }
 
     public void delete(Long id) {
+        session.delete("UserMapper.deleteUser", id);
+    }
 
+    public User findByEmail(String email) {
+        return session.selectOne("UserMapper.getUserByEmail", email);
     }
 }

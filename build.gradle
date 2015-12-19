@@ -1,7 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'war'
 
-sourceCompatibility = 1.7
 version = '1.0'
 
 repositories {
@@ -10,6 +9,7 @@ repositories {
 
 ext {
     springVersion = '4.2.1.RELEASE';
+    springSecurityVersion = '3.2.4.RELEASE';
 }
 
 dependencies {
@@ -22,5 +22,9 @@ dependencies {
     compile group: 'org.springframework', name:'spring-core', version: springVersion
     compile group: 'org.springframework', name:'spring-beans', version: springVersion
     compile group: 'org.springframework', name:'spring-jdbc', version: springVersion
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: springSecurityVersion
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: springSecurityVersion
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: springSecurityVersion
+    compile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    compile group: 'jstl', name:'jstl', version:'1.2'
 }

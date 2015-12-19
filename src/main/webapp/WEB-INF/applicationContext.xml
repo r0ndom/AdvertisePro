@@ -7,8 +7,9 @@
                http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan
-            base-package="com.dnu.team.advertise.pro.dao"/>
+            base-package="com.dnu.team.advertise.pro.dao, com.dnu.team.advertise.pro.service"/>
     <context:property-placeholder location="classpath:/db.properties"/>
 
     <import resource="classpath:config/mybatis-config.xml"/>
+    <import resource="classpath:config/spring-security.xml"/>
 </beans>
