@@ -3,7 +3,6 @@ package com.dnu.team.advertise.pro.service;
 import com.dnu.team.advertise.pro.dao.UserDao;
 import com.dnu.team.advertise.pro.model.Role;
 import com.dnu.team.advertise.pro.model.User;
-import com.dnu.team.advertise.pro.util.Generator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
