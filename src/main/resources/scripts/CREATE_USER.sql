@@ -2,20 +2,20 @@
 DELIMITER //
 
 CREATE PROCEDURE CREATE_USER(IN ID INT,
-  IN FIRST_NAME VARCHAR(16),
-  IN LAST_NAME VARCHAR(16),
-  IN MIDDLE_NAME VARCHAR(16),
-  IN ROLE VARCHAR(16),
-  IN CONTACT_ID INT,
-  IN CITY VARCHAR(16),
-  IN POST_CODE INT,
-  IN STREET VARCHAR(16),
-  IN HOUSE INT,
-  IN FLAT INT,
-  IN PHONE VARCHAR(16),
-  IN EMAIL VARCHAR(16),
-  IN LOGIN VARCHAR(16),
-  IN PASSWORD VARCHAR(16))
+                             IN FIRST_NAME VARCHAR(255),
+                             IN LAST_NAME VARCHAR(255),
+                             IN MIDDLE_NAME VARCHAR(255),
+                             IN ROLE VARCHAR(255),
+                             IN CONTACT_ID INT,
+                             IN CITY VARCHAR(255),
+                             IN POST_CODE INT,
+                             IN STREET VARCHAR(255),
+                             IN HOUSE INT,
+                             IN FLAT INT,
+                             IN PHONE VARCHAR(255),
+                             IN EMAIL VARCHAR(255),
+                             IN LOGIN VARCHAR(255),
+                             IN PASS VARCHAR(255))
 
   BEGIN
 
@@ -30,9 +30,10 @@ CREATE PROCEDURE CREATE_USER(IN ID INT,
     END;
 
     START TRANSACTION;
-      insert into USERS(ID, FIRST_NAME, LAST_NAME, MIDDLE_NAME, ROLE) values (ID, FIRST_NAME, LAST_NAME, MIDDLE_NAME, ROLE);
-      insert into CONTACTS(ID, USER_ID, CITY, POST_CODE, STREET, HOUSE, FLAT, PHONE, EMAIL) values (CONTACT_ID, ID, CITY, POST_CODE, STREET, HOUSE, FLAT, PHONE, EMAIL);
-      insert into CREDENTIALS(LOGIN, PASSWORD, USER_ID) values (LOGIN, PASSWORD, ID);
+
+    insert into USERS(ID, FIRST_NAME, LAST_NAME, MIDDLE_NAME, ROLE) values (ID, FIRST_NAME, LAST_NAME, MIDDLE_NAME, ROLE);
+    insert into CONTACTS(ID, USER_ID, CITY, POST_CODE, STREET, HOUSE, FLAT, PHONE, EMAIL) values (CONTACT_ID, ID, CITY, POST_CODE, STREET, HOUSE, FLAT, PHONE, EMAIL);
+    insert into CREDENTIALS(LOGIN, PASS, USER_ID) values (LOGIN, PASS, ID);
 
     COMMIT;
   END

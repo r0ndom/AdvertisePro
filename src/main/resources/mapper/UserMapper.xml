@@ -50,7 +50,7 @@
           contacts.PHONE as PHONE,
           contacts.EMAIL as EMAIL,
           credentials.LOGIN as LOGIN,
-          credentials.PASSWORD as PASSWORD
+          credentials.PASS as PASSWORD
         FROM USERS users
           INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
           INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID
@@ -73,7 +73,7 @@
           contacts.PHONE as PHONE,
           contacts.EMAIL as EMAIL,
           credentials.LOGIN as LOGIN,
-          credentials.PASSWORD as PASSWORD
+          credentials.PASS as PASSWORD
         FROM USERS users
           INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
           INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID
