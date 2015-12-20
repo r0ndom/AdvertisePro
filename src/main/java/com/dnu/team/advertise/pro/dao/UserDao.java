@@ -30,7 +30,7 @@ public class UserDao {
         mapper.delete(id);
     }
 
-    public User findByEmail(String email) {
-        return mapper.findByEmail(email);
+    public User findByLogin(String login) {
+        return mapper.findByLogin(login);
     }
 }

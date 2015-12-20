@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dnu.team.advertise.pro.dao.mapper.UserMapper">
+<mapper namespace="com.dnu.team.advertise.pro.dao.mapper.UserMapper" >
 
     <resultMap id="getUserResultMap" type="com.dnu.team.advertise.pro.model.User">
 
@@ -57,7 +57,7 @@
         WHERE users.id = #{id}
     </select>
 
-    <select id="findByEmail" resultMap="getUserResultMap">
+    <select id="findByLogin" resultMap="getUserResultMap">
         SELECT
           users.ID as ID,
           users.FIRST_NAME as FIRST_NAME,
@@ -77,12 +77,12 @@
         FROM USERS users
           INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
           INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID
-        WHERE contacts.EMAIL = #{email}
+        WHERE credentials.LOGIN = #{login}
     </select>
 
     <insert id="create" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
-         {call CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
-         #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})}
+        {call CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
+        #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})}
     </insert>
 
     <update id="update" parameterType="User">

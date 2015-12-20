@@ -23,10 +23,10 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(final Authentication authentication) {
-        final String username = authentication.getName();
-        final String password = (String) authentication.getCredentials();
+        final String login = authentication.getName();
+        final String password = authentication.getCredentials().toString();
 
-        if (username == null || username.trim().isEmpty()) {
+        if (login == null || login.trim().isEmpty()) {
             throw new BadCredentialsException("Логин не может быть пустым");
         }
 
@@ -34,7 +34,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("Пароль не может быть пустым");
         }
 
-        final User user = userDao.findByEmail(username);
+        final User user = userDao.findByLogin(login);
 
         if (user == null) {
             throw new BadCredentialsException("Пользователь не найден");

@@ -7,5 +7,5 @@ public interface UserMapper {
     User get(Long id);
     void update(User user);
     void delete(Long id);
-    User findByEmail(String email);
+    User findByLogin(String login);
 }

@@ -8,10 +8,11 @@
 
     <script>
         function showPasswordLogin() {
-            if ($('#password').get(0).type =='password') {
-                $('#password').get(0).type='text';
+            var password = $('#password');
+            if (password.get(0).type =='password') {
+                password.get(0).type='text';
             } else {
-                $('#password').get(0).type='password';
+                password.get(0).type='password';
             }
         }
     </script>
@@ -61,9 +62,6 @@
                     </div>
                     <div class="row"><div class="col-md-7">
                         <input class="btn btn-primary" style="width: 100%; height: 40px" value="Вход" type="submit"></div></div>
-                    <a href="${pageContext.request.contextPath}/admin">Admin form</a>
-                    <a href="${pageContext.request.contextPath}/agent">Agent form</a>
-                    <a href="${pageContext.request.contextPath}/client">Client form</a>
                 </form>
             </div>
         </div>
