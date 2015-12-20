@@ -5,7 +5,6 @@ package com.dnu.team.advertise.pro.util;
  */
 public class Generator {
 
-
     /**
      *  beta version for testing
      *  expected bug on reload app
