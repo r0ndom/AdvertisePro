@@ -1,5 +1,8 @@
 package com.dnu.team.advertise.pro.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 public class Contacts {
     private Long id;
     private Long userId;

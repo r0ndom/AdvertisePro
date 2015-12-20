@@ -3,12 +3,14 @@ package com.dnu.team.advertise.pro.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class User implements UserDetails {
-
+public class User implements UserDetails
+{
     private Long id;
     private String firstName;
     private String lastName;

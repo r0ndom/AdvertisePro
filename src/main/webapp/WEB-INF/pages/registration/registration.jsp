@@ -1,9 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <tag:layout>
+    <script>
+
+    </script>
+
     <title>Регистрация</title>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/registration.css">
@@ -12,24 +17,24 @@
         <h1 class="well">Регистрация</h1>
         <div class="col-lg-12 well">
             <div class="row">
-                <form>
+                <form:form method="POST" id="register" action="/registration" onsubmit="">
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label>Логин *</label>
-                                <input type="text" placeholder="Логин" class="form-control" id="login">
+                                <form:input id="login" cssClass="form-control" path="credentials.login" required="required" placeholder="Логин"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label>Email *</label>
-                                <input type="text" placeholder="Email" class="form-control" id="email">
+                                <form:input id="email" cssClass="form-control" path="contacts.email" required="required" placeholder="Email"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 form-group">
                                 <label>Пароль *</label>
-                                <input type="password" placeholder="Пароль" class="form-control" id="firstPassword">
+                                <form:password id="password" cssClass="form-control" path="credentials.password" required="required" placeholder="Пароль"/>
                             </div>
                             <div class="col-sm-6 form-group">
                                 <label>Повторите пароль *</label>
@@ -39,45 +44,45 @@
                         <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>Фамилия *</label>
-                                <input type="text" placeholder="Фамилия" class="form-control" id="lastName">
+                                <form:input id="lastName" cssClass="form-control" path="lastName" required="required" placeholder="Фамилия"/>
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Имя *</label>
-                                <input type="text" placeholder="Имя" class="form-control" id="firstName">
+                                <form:input id="firsttName" cssClass="form-control" path="firstName" required="required" placeholder="Имя"/>
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Отчество *</label>
-                                <input type="text" placeholder="Отчество" class="form-control" id="middleName">
+                                <form:input id="middleName" cssClass="form-control" path="middleName" required="required" placeholder="Отчество"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 form-group">
                                 <label>Город *</label>
-                                <input type="text" placeholder="Город" class="form-control" id="city">
+                                <form:input id="city" cssClass="form-control" path="contacts.city" required="required" placeholder="Город"/>
                             </div>
                             <div class="col-sm-6 form-group">
                                 <label>Улица *</label>
-                                <input type="text" placeholder="Улица" class="form-control" id="street">
+                                <form:input id="street" cssClass="form-control" path="contacts.street" required="required" placeholder="Улица"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>Номер дома *</label>
-                                <input type="text" placeholder="Номер дома" class="form-control" id="house">
+                                <form:input id="house" cssClass="form-control" path="contacts.house" required="required" placeholder="Номер дома"/>
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Номер квартиры *</label>
-                                <input type="text" placeholder="Еомер квартиры" class="form-control" id="flat">
+                                <form:input id="flat" cssClass="form-control" path="contacts.flat" required="required" placeholder="Номер квартиры"/>
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Почтовый индекс *</label>
-                                <input type="text" placeholder="Почтовый идекс" class="form-control" id="zip">
+                                <form:input id="postCode" cssClass="form-control" path="contacts.postCode" required="required" placeholder="Почтовый индекс"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label>Номер телефона *</label>
-                                <input type="text" placeholder="Номер телефона" class="form-control" id="phone">
+                                <form:input id="phone" cssClass="form-control" path="contacts.phone" required="required" placeholder="Номер телефона"/>
                             </div>
                         </div>
                         <div class="row">
@@ -86,7 +91,7 @@
                             <div><a href="<c:url value="/login"/>"><button type="button" class="btn btn-lg btn-danger">Отмена</button></a></div>
                         </div>
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>

@@ -44,8 +44,12 @@ public class SimpleAuthenticationSuccessHandler implements
             return "/admin";
         }
 
-        if (authorizedUser.getAuthorities().contains(Role.ROLE_USER)) {
-            return "/user/";
+        if (authorizedUser.getAuthorities().contains(Role.ROLE_CLIENT)) {
+            return "/client/";
+        }
+
+        if (authorizedUser.getAuthorities().contains(Role.ROLE_AGENT)) {
+            return "agent";
         }
         return "/";
     }

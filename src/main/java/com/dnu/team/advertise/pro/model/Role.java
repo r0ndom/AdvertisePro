@@ -3,8 +3,9 @@ package com.dnu.team.advertise.pro.model;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum Role implements GrantedAuthority {
-    ROLE_USER("User"),
-    ROLE_ADMIN("Admin");
+    ROLE_CLIENT("Client"),
+    ROLE_ADMIN("Admin"),
+    ROLE_AGENT("Agent");
 
     private final String roleViewName;
 
