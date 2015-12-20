@@ -81,11 +81,8 @@
     </select>
 
     <insert id="create" parameterType="com.dnu.team.advertise.pro.model.User">
-        BEGIN;
-        insert into USERS(ID, FIRST_NAME, LAST_NAME, MIDDLE_NAME, ROLE) values (#{id}, #{firstName}, #{lastName}, #{middleName}, #{role});
-        insert into CONTACTS(ID, USER_ID, CITY, POST_CODE, STREET, HOUSE, FLAT, PHONE, EMAIL) values (#{contacts.id}, #{id}, #{contacts.city}, #{contacts.postCode}, #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email});
-        insert into CREDENTIALS(LOGIN, PASSWORD, USER_ID) values (#{credentials.login}, #{credentials.password}, #{id});
-        COMMIT;
+         {call CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
+         #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})}
     </insert>
 
     <update id="update" parameterType="User">
