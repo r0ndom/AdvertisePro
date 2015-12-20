@@ -1,8 +1,8 @@
 package com.dnu.team.advertise.pro.model;
 
 public class Contacts {
-    private Long id;
-    private Long userId;
+    private String id;
+    private String userId;
     private String city;
     private Integer postCode;
     private String street;
@@ -11,19 +11,19 @@ public class Contacts {
     private String phone;
     private String email;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

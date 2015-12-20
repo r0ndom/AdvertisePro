@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class User implements UserDetails
 {
-    private Long id;
+    private String id;
     private String firstName;
     private String lastName;
     private String middleName;
@@ -70,11 +70,11 @@ public class User implements UserDetails
         this.credentials = credentials;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

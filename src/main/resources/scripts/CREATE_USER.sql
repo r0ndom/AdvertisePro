@@ -1,12 +1,12 @@
 -- stored procedure will be here
 DELIMITER //
 
-CREATE PROCEDURE CREATE_USER(IN ID INT,
+CREATE PROCEDURE CREATE_USER(IN ID VARCHAR(255),
                              IN FIRST_NAME VARCHAR(255),
                              IN LAST_NAME VARCHAR(255),
                              IN MIDDLE_NAME VARCHAR(255),
                              IN ROLE VARCHAR(255),
-                             IN CONTACT_ID INT,
+                             IN CONTACT_ID VARCHAR(255),
                              IN CITY VARCHAR(255),
                              IN POST_CODE INT,
                              IN STREET VARCHAR(255),

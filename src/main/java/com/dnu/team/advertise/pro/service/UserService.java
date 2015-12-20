@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserService {
     @Autowired
@@ -20,7 +22,7 @@ public class UserService {
     }
 
     public void create(User user, Role role) {
-        Long id = Generator.generateId();
+        String id = UUID.randomUUID().toString();
         user.setId(id);
         String encodedPassword = passwordEncoder.encode(user.getCredentials().getPassword());
         user.getCredentials().setPassword(encodedPassword);

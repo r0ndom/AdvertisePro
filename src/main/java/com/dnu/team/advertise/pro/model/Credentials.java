@@ -3,7 +3,7 @@ package com.dnu.team.advertise.pro.model;
 public class Credentials {
     private String login;
     private String password;
-    private Long userId;
+    private String userId;
 
     public String getLogin() {
         return login;
@@ -21,11 +21,11 @@ public class Credentials {
         this.password = password;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 }
