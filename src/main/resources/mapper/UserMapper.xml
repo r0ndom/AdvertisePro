@@ -80,7 +80,7 @@
         WHERE contacts.EMAIL = #{email}
     </select>
 
-    <insert id="create" parameterType="com.dnu.team.advertise.pro.model.User">
+    <insert id="create" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
          {call CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
          #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})}
     </insert>
