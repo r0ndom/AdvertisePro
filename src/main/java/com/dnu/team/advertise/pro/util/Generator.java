@@ -8,6 +8,7 @@ public class Generator {
 
     /**
      *  beta version for testing
+     *  expected bug on reload app
      */
     private static Long counter = 0L;
 
