@@ -29,7 +29,9 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Логин <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Профиль</a>
+                        <a
+                                href="<c:url value="/info"/>"
+                                ><i class="fa fa-fw fa-user"></i> Профиль</a>
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -73,14 +75,6 @@
         </div>
 
     </div>
-
-    <%--<jsp:include page="/WEB-INF/pages/admin/createUpdateUserModal.jsp">--%>
-        <%--<jsp:param name="action" value="create"/>--%>
-    <%--</jsp:include>--%>
-    <%--<jsp:include page="/WEB-INF/pages/admin/createUpdateUserModal.jsp">--%>
-        <%--<jsp:param name="action" value="update"/>--%>
-    <%--</jsp:include>--%>
-    <%--<jsp:include page="/WEB-INF/pages/admin/deleteUserModal.jsp"/>--%>
 
 </div>
 

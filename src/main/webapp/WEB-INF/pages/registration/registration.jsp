@@ -6,7 +6,11 @@
 
 <tag:layout>
     <script>
-
+//        $(document).ready(function() {
+//            $("#submitButton").click(function() {
+//
+//            });
+//        });
     </script>
 
     <title>Регистрация</title>
@@ -17,7 +21,7 @@
         <h1 class="well">Регистрация</h1>
         <div class="col-lg-12 well">
             <div class="row">
-                <form:form method="POST" id="register" action="/registration" onsubmit="">
+                <form:form method="POST" id="register" action="/registration">
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-12 form-group">
@@ -86,7 +90,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 form-group"><button type="submit" class="btn btn-lg btn-success">Зарегистрироваться</button></div>
+                            <div class="col-sm-4 form-group"><button type="submit" class="btn btn-lg btn-success" id="submitButton">Зарегистрироваться</button></div>
                             <div class="col-sm-6 form-group"><button type="reset" class="btn btn-lg btn-warning">Очистить</button></div>
                             <div><a href="<c:url value="/login"/>"><button type="button" class="btn btn-lg btn-danger">Отмена</button></a></div>
                         </div>

@@ -30,7 +30,6 @@
             <result property="userId" column="ID"/>
         </association>
 
-
     </resultMap>
 
 
@@ -55,6 +54,29 @@
           INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
           INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID
         WHERE users.id = #{id}
+    </select>
+
+    <select id="getUsers">
+        SELECT
+          credentials.LOGIN as LOGIN,
+          contacts.EMAIL as EMAIL,
+          users.LAST_NAME as LAST_NAME,
+          users.FIRST_NAME as FIRST_NAME,
+          users.MIDDLE_NAME as MIDDLE_NAME,
+          contacts.CITY as CITY,
+          contacts.STREET as STREET,
+          contacts.POST_CODE as POST_CODE,
+          contacts.HOUSE as HOUSE,
+          contacts.FLAT as FLAT,
+          contacts.PHONE as PHONE,
+          users.ROLE as ROLE
+        FROM
+          USERS users
+          INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
+          INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID;
+    </select>
+
+    <select id="search" resultMap="getUserResultMap">
     </select>
 
     <select id="findByLogin" resultMap="getUserResultMap">

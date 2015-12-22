@@ -4,6 +4,7 @@ import com.dnu.team.advertise.pro.dao.UserDao;
 import com.dnu.team.advertise.pro.model.Role;
 import com.dnu.team.advertise.pro.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,9 @@ public class UserService {
         user.getContacts().setUserId(user.getId());
         user.getCredentials().setUserId(user.getId());
         userDao.create(user);
+    }
+
+    public User getCurrentUser() {
+        return userDao.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 }

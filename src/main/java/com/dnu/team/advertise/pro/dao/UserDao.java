@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UserDao {
 
@@ -32,5 +34,9 @@ public class UserDao {
 
     public User findByLogin(String login) {
         return mapper.findByLogin(login);
+    }
+
+    public List<User> getUsers() {
+        return mapper.getUsers();
     }
 }

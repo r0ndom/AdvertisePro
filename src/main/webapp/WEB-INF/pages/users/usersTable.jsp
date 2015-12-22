@@ -15,13 +15,24 @@
         </tr>
     </thead>
     <tbody>
+        <c:forEach items="${users}" var="user">
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>${user.credentials.login}</td>
+            <td>${user.contacts.email}</td>
+            <td>${user.lastName} ${user.firstName} ${user.middleName}</td>
+            <td>${user.contacts.postCode}, г. ${user.contacts.city}, ул. ${user.contacts.street}, д. ${user.contacts.house}, кв. ${user.contacts.flat}</td>
+            <td>${user.contacts.phone}</td>
+            <td>
+                <c:if test="${user.role == 'ROLE_ADMIN'}">
+                    <c:out value="Администратор"/>
+                </c:if>
+                <c:if test="${user.role == 'ROLE_AGENT'}">
+                    <c:out value="Агент"/>
+                </c:if>
+                <c:if test="${user.role == 'ROLE_CLIENT'}">
+                    <c:out value="Клиент"/>
+                </c:if>
+            </td>
             <td>
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -35,6 +46,8 @@
                 </div>
             </td>
         </tr>
+        </c:forEach>
+<c:forEach items="${users}" var="user">${user}</c:forEach>
     </tbody>
 </table>
 
