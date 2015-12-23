@@ -30,7 +30,7 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a
-                                href="<c:url value="/info"/>"
+                                href="<c:url value="/admin/info"/>"
                                 ><i class="fa fa-fw fa-user"></i> Профиль</a>
                     </li>
                     <li class="divider"></li>

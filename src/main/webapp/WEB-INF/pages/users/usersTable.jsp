@@ -41,7 +41,9 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li><a href="#">Редактировать</a></li>
-                        <li><a href="#">Удалить</a></li>
+                        <c:if test="${user.role != 'ROLE_ADMIN'}">
+                            <li><a href="#">Удалить</a></li>
+                        </c:if>
                     </ul>
                 </div>
             </td>
@@ -51,8 +53,8 @@
 </table>
 
 <div style="text-align: center; margin-top: 50px; margin-bottom: 90px">
-    <button id="addUser" class="btn btn-primary"
-            data-toggle="modal" data-target="">
+    <a href="<c:url value="/admin/agentRegistration"/>"><button id="addUser" class="btn btn-primary"
+            data-toggle="modal">
         Создать агента
-    </button>
+    </button></a>
 </div>

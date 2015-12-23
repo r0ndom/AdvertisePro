@@ -17,9 +17,11 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public void create(User user) {
+    public void createClient(User user) {
         create(user, Role.ROLE_CLIENT);
     }
+
+    public void createAgent(User user) { create(user, Role.ROLE_AGENT); }
 
     public void create(User user, Role role) {
         String id = UUID.randomUUID().toString();
