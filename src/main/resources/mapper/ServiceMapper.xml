@@ -23,4 +23,14 @@
         SELECT * FROM services WHERE services.aTYPE = #{type} AND services.PERIOD = #{period};
     </select>
 
+    <select id="search" resultMap="getServiceResultMap" parameterType="com.dnu.team.advertise.pro.model.filter.ServiceSearchFilter">
+        SELECT * FROM services
+        <where>
+            <if test="price != null">services.PRICE = #{price}</if>
+            <if test="type != null and type != ''">AND services.aTYPE = #{type}</if>
+            <if test="period != null and period != ''">AND services.PERIOD = #{period}
+            </if>
+        </where>
+    </select>
+
 </mapper>

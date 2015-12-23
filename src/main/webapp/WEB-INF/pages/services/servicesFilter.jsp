@@ -1,40 +1,32 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<form>
+<form:form method="POST" action="/servicesTable">
     <div class="col-sm-12">
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label>Тип</label>
-                <input type="text" placeholder="Тип" class="form-control" id="type">
+                <form:input id="type" cssClass="form-control" path="type"  placeholder="Тип"/>
             </div>
             <div class="col-sm-6 form-group">
                 <label>Период</label>
-                <select class="form-control">
-                    <option>День</option>
-                    <option>Неделя</option>
-                    <option>Месяц</option>
-                    <option>Квартал</option>
-                    <option>Полгода</option>
-                    <option>Год</option>
-                </select>
+                <form:select path="period" cssClass="form-control" id="period">
+                    <form:option value="${null}" label="Выберите период" disabled="true"/>
+                    <form:option value="День" label="День"/>
+                    <form:option value="Неделя" label="Неделя"/>
+                    <form:option value="Месяц" label="Месяц"/>
+                    <form:option value="Квартал" label="Квартал"/>
+                    <form:option value="Полгода" label="Полгода"/>
+                    <form:option value="Год" label="Год"/>
+                </form:select>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-1 form-group">
-                <label style="color: #ffffff">1</label>
-                <select class="form-control">
-                    <option><</option>
-                    <option><=</option>
-                    <option>></option>
-                    <option>>=</option>
-                    <option>=</option>
-                </select>
-            </div>
-            <div class="col-sm-5 form-group">
+            <div class="col-sm-6 form-group">
                 <label>Цена</label>
-                <input type="text" placeholder="Цена" class="form-control" id="price">
+                <form:input id="type" cssClass="form-control" path="price"  placeholder="Цена" required="required"/>
             </div>
         </div>
         <div class="row">
@@ -42,4 +34,4 @@
             <div style="float: right"><button type="reset" class="btn btn-lg btn-warning">Очистить</button></div>
         </div>
     </div>
-</form>
+</form:form>

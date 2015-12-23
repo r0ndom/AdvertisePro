@@ -80,6 +80,11 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 
 <script type="text/javascript">
+//    window.onload = function() {
+//        if (document.referrer != 'http://localhost:8080/login')
+//            window.history.forward();
+//    };
+
     $(document).ready(function() {
         $('#menu').find('li').click(function() {
             var activeLiIndex = $(this).index();
@@ -97,10 +102,6 @@
                 case 2:
                     pageContent.load("/priceListFilter");
                     tableContent.load("/priceListTable");
-                    break;
-                case 3:
-                    pageContent.load("/ordersFilter");
-                    tableContent.load("/ordersTable");
                     break;
             }
         });

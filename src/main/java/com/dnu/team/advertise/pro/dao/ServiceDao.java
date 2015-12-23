@@ -2,6 +2,7 @@ package com.dnu.team.advertise.pro.dao;
 
 import com.dnu.team.advertise.pro.dao.mapper.ServiceMapper;
 import com.dnu.team.advertise.pro.model.Service;
+import com.dnu.team.advertise.pro.model.filter.ServiceSearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +23,9 @@ public class ServiceDao {
 
     public Service getByTypeAndPeriod(Service service) {
         return mapper.getByTypeAndPeriod(service);
+    }
+
+    public List<Service> search(ServiceSearchFilter serviceSearchFilter) {
+        return mapper.search(serviceSearchFilter);
     }
 }
