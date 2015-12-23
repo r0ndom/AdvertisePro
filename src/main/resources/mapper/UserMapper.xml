@@ -144,17 +144,13 @@
         #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})}
     </insert>
 
-    <update id="update" parameterType="User">
-         update USERS set FIRST_NAME=#{firstName}, LAST_NAME=#{lastName}, MIDDLE_NAME=#{middleName}, ROLE=#{role},  where ID = #{id};
-         update CONTACTS set USER_ID=#{id}, CITY=#{contacts.city}, POST_CODE=#{contacts.postCode},
-           STREET=#{contacts.street}, HOUSE=#{contacts.house}, FLAT=#{contacts.flat}, PHONE=#{contacts.phone}, EMAIL=#{contacts.email},where USER_ID = #{id};
-         update CREDENTIALS set LOGIN=#{credentials.login}, PASSWORD=#{credentials.password}, USER_ID=#{id}  where USER_ID = #{id};
+    <update id="update" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
+        {call UPDATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{contacts.city}, #{contacts.postCode},
+        #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.password})}
     </update>
 
-    <delete id="delete" parameterType="User">
-        delete from USERS where ID=#{id};
-        delete from CONTACTS where USER_ID=#{id};
-        delete from CREDENTIALS where USER_ID=#{id};
+    <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
+        {call DELETE_USER(#{id})}
     </delete>
 
 </mapper>

@@ -40,9 +40,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Редактировать</a></li>
+                        <li><a href="/admin/updateUser/${user.id}">Редактировать</a></li>
                         <c:if test="${user.role != 'ROLE_ADMIN'}">
-                            <li><a href="#">Удалить</a></li>
+                            <li><a href="/admin/deleteUser/${user.id}">Удалить</a></li>
                         </c:if>
                     </ul>
                 </div>

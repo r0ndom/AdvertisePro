@@ -38,4 +38,9 @@ public class UserService {
     public User getCurrentUser() {
         return userDao.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
     }
+
+    public void update(User user) {
+        user.getCredentials().setPassword(passwordEncoder.encode(user.getCredentials().getPassword()));
+        userDao.update(user);
+    }
 }

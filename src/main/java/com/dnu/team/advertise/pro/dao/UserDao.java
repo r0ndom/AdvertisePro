@@ -22,7 +22,7 @@ public class UserDao {
         mapper.create(user);
     }
 
-    public User get(Long id) {
+    public User get(String id) {
         return mapper.get(id);
     }
 
@@ -30,7 +30,7 @@ public class UserDao {
         mapper.update(user);
     }
 
-    public void delete(Long id) {
+    public void delete(String id) {
         mapper.delete(id);
     }
 
