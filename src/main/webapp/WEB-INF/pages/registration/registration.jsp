@@ -5,6 +5,18 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <tag:layout>
+    <style>
+        .error {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
+
     <script>
 //        $(document).ready(function() {
 //            $("#submitButton").click(function() {
@@ -87,6 +99,13 @@
                             <div class="col-sm-12 form-group">
                                 <label>Номер телефона *</label>
                                 <form:input id="phone" cssClass="form-control" path="contacts.phone" required="required" placeholder="Номер телефона"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <c:if test="${error == false}">
+                                    <div class="error">Пользователь с данным логином уже существует!</div>
+                                </c:if>
                             </div>
                         </div>
                         <div class="row">

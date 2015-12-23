@@ -47,7 +47,6 @@ public class AdminController {
         mav.addObject("error", View.getIsCreate());
         View.setIsCreate(true);
         return mav;
-//        return new ModelAndView(CREATE_ADMIN, "command", new User());
     }
 
     @RequestMapping(value = "/agentRegistration", method = RequestMethod.POST)

@@ -111,7 +111,7 @@
                         <div class="row">
                             <div class="col-sm-4 form-group"><button type="submit" class="btn btn-lg btn-success" id="submitButton">Зарегистрировать</button></div>
                             <div class="col-sm-6 form-group"><button type="reset" class="btn btn-lg btn-warning">Очистить</button></div>
-                            <div><a href="<c:url value="/login"/>"><button type="button" class="btn btn-lg btn-danger">Отмена</button></a></div>
+                            <div><a href="<c:url value="/admin"/>"><button type="button" class="btn btn-lg btn-danger">Отмена</button></a></div>
                         </div>
                     </div>
                 </form:form>
