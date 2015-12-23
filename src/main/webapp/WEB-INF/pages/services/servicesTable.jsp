@@ -12,10 +12,11 @@
     </tr>
     </thead>
     <tbody>
+    <c:forEach items="${services}" var="service">
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>${service.type}</td>
+        <td>${service.price}</td>
+        <td>${service.period}</td>
         <td>
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -29,12 +30,13 @@
             </div>
         </td>
     </tr>
+    </c:forEach>
     </tbody>
 </table>
 
 <div style="text-align: center; margin-top: 50px; margin-bottom: 90px">
-    <button id="addUser" class="btn btn-primary"
-            data-toggle="modal" data-target="#createUserModal">
+    <a href="<c:url value="/admin/addService"/>"><button id="addUser" class="btn btn-primary"
+            data-toggle="modal">
         Добавить услугу
-    </button>
+    </button></a>
 </div>

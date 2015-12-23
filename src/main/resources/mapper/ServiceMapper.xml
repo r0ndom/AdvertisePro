@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dnu.team.advertise.pro.dao.mapper.ServiceMapper" >
+
+    <resultMap id="getServiceResultMap" type="com.dnu.team.advertise.pro.model.Service">
+        <id property="id" column="ID"/>
+        <result property="type" column="aTYPE"/>
+        <result property="price" column="PRICE"/>
+        <result property="period" column="PERIOD"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="getServiceResultMap">
+        SELECT * FROM services;
+    </select>
+
+    <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Service" statementType="CALLABLE">
+        insert into services VALUES (#{id}, #{type}, #{price}, #{period});
+    </insert>
+
+    <select id="getByTypeAndPeriod" resultMap="getServiceResultMap">
+        SELECT * FROM services WHERE services.aTYPE = #{type} AND services.PERIOD = #{period};
+    </select>
+
+</mapper>

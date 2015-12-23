@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/registration.css">
 
     <div class="container">
-        <h1 class="well">Создание агента</h1>
+        <h1 class="well">Редактирование пользователя</h1>
         <div class="col-lg-12 well">
             <div class="row">
                 <form:form method="POST" id="register" action="/admin/updateUser/${command.id}">

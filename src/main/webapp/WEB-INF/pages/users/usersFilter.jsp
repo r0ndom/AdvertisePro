@@ -61,7 +61,7 @@
             <div class="col-sm-6 form-group">
                 <label>Роль</label>
                 <form:select path="role" cssClass="form-control" id="role">
-                    <form:option value="${null}" label="Выберите роль"/>
+                    <form:option value="${null}" label="Выберите роль" disabled="true"/>
                     <form:option value="ROLE_ADMIN" label="Администратор"/>
                     <form:option value="ROLE_AGENT" label="Агент"/>
                     <form:option value="ROLE_CLIENT" label="Клиент"/>

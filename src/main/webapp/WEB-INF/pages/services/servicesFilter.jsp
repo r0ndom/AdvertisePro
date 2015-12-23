@@ -11,7 +11,14 @@
             </div>
             <div class="col-sm-6 form-group">
                 <label>Период</label>
-                <input type="text" placeholder="Период" class="form-control" id="age">
+                <select class="form-control">
+                    <option>День</option>
+                    <option>Неделя</option>
+                    <option>Месяц</option>
+                    <option>Квартал</option>
+                    <option>Полгода</option>
+                    <option>Год</option>
+                </select>
             </div>
         </div>
         <div class="row">
