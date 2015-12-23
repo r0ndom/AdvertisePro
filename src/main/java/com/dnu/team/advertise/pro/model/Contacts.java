@@ -6,8 +6,8 @@ public class Contacts {
     private String city;
     private Integer postCode;
     private String street;
-    private Integer house;
-    private Integer flat;
+    private String house;
+    private String flat;
     private String phone;
     private String email;
 
@@ -51,19 +51,19 @@ public class Contacts {
         this.street = street;
     }
 
-    public Integer getHouse() {
+    public String getHouse() {
         return house;
     }
 
-    public void setHouse(Integer house) {
+    public void setHouse(String house) {
         this.house = house;
     }
 
-    public Integer getFlat() {
+    public String getFlat() {
         return flat;
     }
 
-    public void setFlat(Integer flat) {
+    public void setFlat(String flat) {
         this.flat = flat;
     }
 

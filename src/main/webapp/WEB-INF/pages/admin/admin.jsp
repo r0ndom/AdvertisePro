@@ -52,9 +52,6 @@
                 <li>
                     <a href="#"> Прайс-лист</a>
                 </li>
-                <%--<li>--%>
-                    <%--<a href="#"> Заказы</a>--%>
-                <%--</li>--%>
             </ul>
         </div>
 
@@ -107,6 +104,7 @@
                     break;
             }
         });
+
         $("#pageContent").load("/userFilter");
         $("#tableContent").load("/userTable");
     });

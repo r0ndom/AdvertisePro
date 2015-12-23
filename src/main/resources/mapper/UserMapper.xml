@@ -56,27 +56,64 @@
         WHERE users.id = #{id}
     </select>
 
-    <select id="getUsers">
+    <select id="getAllUsers" resultMap="getUserResultMap">
         SELECT
-          credentials.LOGIN as LOGIN,
-          contacts.EMAIL as EMAIL,
-          users.LAST_NAME as LAST_NAME,
+          users.ID as ID,
           users.FIRST_NAME as FIRST_NAME,
+          users.LAST_NAME as LAST_NAME,
           users.MIDDLE_NAME as MIDDLE_NAME,
+          users.ROLE as ROLE,
+          contacts.ID as CONTACT_ID,
           contacts.CITY as CITY,
-          contacts.STREET as STREET,
           contacts.POST_CODE as POST_CODE,
+          contacts.STREET as STREET,
           contacts.HOUSE as HOUSE,
           contacts.FLAT as FLAT,
           contacts.PHONE as PHONE,
-          users.ROLE as ROLE
+          contacts.EMAIL as EMAIL,
+          credentials.LOGIN as LOGIN,
+          credentials.PASS as PASSWORD
         FROM
           USERS users
           INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
           INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID;
     </select>
 
-    <select id="search" resultMap="getUserResultMap">
+    <select id="search" resultMap="getUserResultMap" parameterType="com.dnu.team.advertise.pro.model.filter.UserSearchFilter">
+        SELECT
+          users.ID as ID,
+          users.FIRST_NAME as FIRST_NAME,
+          users.LAST_NAME as LAST_NAME,
+          users.MIDDLE_NAME as MIDDLE_NAME,
+          users.ROLE as ROLE,
+          contacts.ID as CONTACT_ID,
+          contacts.CITY as CITY,
+          contacts.POST_CODE as POST_CODE,
+          contacts.STREET as STREET,
+          contacts.HOUSE as HOUSE,
+          contacts.FLAT as FLAT,
+          contacts.PHONE as PHONE,
+          contacts.EMAIL as EMAIL,
+          credentials.LOGIN as LOGIN,
+          credentials.PASS as PASSWORD
+        FROM
+          USERS users
+          INNER JOIN CONTACTS contacts ON users.ID = contacts.USER_ID
+          INNER JOIN CREDENTIALS credentials ON users.ID = credentials.USER_ID
+          <where>
+            <if test="login != null and login != ''">credentials.LOGIN = #{login}</if>
+            <if test="email != null and email != ''">AND contacts.email = #{email}</if>
+            <if test="lastName != null and lastName != ''">AND users.last_name = #{lastName}</if>
+            <if test="firstName != null and firstName != ''">AND users.first_name = #{firstName}</if>
+            <if test="middleName != null and middleName != ''">AND users.middle_name = #{middleName}</if>
+            <if test="city != null and city != ''">AND contacts.city = #{city}</if>
+            <if test="street != null and street != ''">AND contacts.street = #{street}</if>
+            <if test="house != null and house != ''">AND contacts.house = #{house}</if>
+            <if test="flat != null and flat != ''">AND contacts.flat = #{flat}</if>
+            <if test="postCode != null">AND contacts.post_code = #{postCode}</if>
+            <if test="phone != null and phone != ''">AND contacts.phone = #{phone}</if>
+            <if test="role != null and role != ''">AND users.role = #{role}</if>
+          </where>
     </select>
 
     <select id="findByLogin" resultMap="getUserResultMap">

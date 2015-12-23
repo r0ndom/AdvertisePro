@@ -1,7 +1,9 @@
 package com.dnu.team.advertise.pro.dao;
 
 import com.dnu.team.advertise.pro.dao.mapper.UserMapper;
+import com.dnu.team.advertise.pro.model.Role;
 import com.dnu.team.advertise.pro.model.User;
+import com.dnu.team.advertise.pro.model.filter.UserSearchFilter;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -37,6 +39,10 @@ public class UserDao {
     }
 
     public List<User> getUsers() {
-        return mapper.getUsers();
+        return mapper.getAllUsers();
+    }
+
+    public List<User> search(UserSearchFilter userSearchFilter) {
+        return mapper.search(userSearchFilter);
     }
 }

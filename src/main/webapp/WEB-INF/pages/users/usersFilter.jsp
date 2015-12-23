@@ -1,74 +1,76 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<form>
+<form:form method="POST" action="/userTable">
     <div class="col-sm-12">
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label>Логин</label>
-                <input type="text" placeholder="Логин" class="form-control" id="login">
+                <form:input id="login" cssClass="form-control" path="login"  placeholder="Логин"/>
             </div>
             <div class="col-sm-6 form-group">
                 <label>Email</label>
-                <input type="text" placeholder="Email" class="form-control" id="email">
+                <form:input id="email" cssClass="form-control" path="email"  placeholder="Email"/>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4 form-group">
                 <label>Фамилия</label>
-                <input type="text" placeholder="Фамилия" class="form-control" id="lastName">
+                <form:input id="lastName" cssClass="form-control" path="lastName"  placeholder="Фамилия"/>
             </div>
             <div class="col-sm-4 form-group">
                 <label>Имя</label>
-                <input type="text" placeholder="Имя" class="form-control" id="firstName">
+                <form:input id="firsttName" cssClass="form-control" path="firstName"  placeholder="Имя"/>
             </div>
             <div class="col-sm-4 form-group">
                 <label>Отчество</label>
-                <input type="text" placeholder="Отчество" class="form-control" id="middleName">
+                <form:input id="middleName" cssClass="form-control" path="middleName"  placeholder="Отчество"/>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label>Город</label>
-                <input type="text" placeholder="Город" class="form-control" id="city">
+                <form:input id="city" cssClass="form-control" path="city"  placeholder="Город"/>
             </div>
             <div class="col-sm-6 form-group">
                 <label>Улица</label>
-                <input type="text" placeholder="Улица" class="form-control" id="street">
+                <form:input id="street" cssClass="form-control" path="street"  placeholder="Улица"/>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4 form-group">
                 <label>Номер дома</label>
-                <input type="text" placeholder="Номер дома" class="form-control" id="house">
+                <form:input id="house" cssClass="form-control" path="house"  placeholder="Номер дома"/>
             </div>
             <div class="col-sm-4 form-group">
                 <label>Номер квартиры</label>
-                <input type="text" placeholder="Еомер квартиры" class="form-control" id="flat">
+                <form:input id="flat" cssClass="form-control" path="flat"  placeholder="Номер квартиры"/>
             </div>
             <div class="col-sm-4 form-group">
                 <label>Почтовый индекс</label>
-                <input type="text" placeholder="Почтовый идекс" class="form-control" id="zip">
+                <form:input id="postCode" cssClass="form-control" path="postCode"  placeholder="Почтовый индекс"/>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label>Номер телефона</label>
-                <input type="text" placeholder="Номер телефона" class="form-control" id="phone">
+                <form:input id="phone" cssClass="form-control" path="phone"  placeholder="Номер телефона"/>
             </div>
             <div class="col-sm-6 form-group">
                 <label>Роль</label>
-                <select class="form-control">
-                    <option>Администратор</option>
-                    <option>Агент</option>
-                    <option>Клиент</option>
-                </select>
+                <form:select path="role" cssClass="form-control" id="role">
+                    <form:option value="${null}" label="Выберите роль"/>
+                    <form:option value="ROLE_ADMIN" label="Администратор"/>
+                    <form:option value="ROLE_AGENT" label="Агент"/>
+                    <form:option value="ROLE_CLIENT" label="Клиент"/>
+                </form:select>
             </div>
         </div>
         <div class="row">
-            <div style="float: left" class="col-sm-4 form-group"><button type="submit" class="btn btn-lg btn-success">Поиск</button></div>
+            <div style="float: left" class="col-sm-4 form-group"><button type="submit" class="btn btn-lg btn-success" id="search">Поиск</button></div>
             <div style="float: right"><button type="reset" class="btn btn-lg btn-warning">Очистить</button></div>
         </div>
     </div>
-</form>
+</form:form>
