@@ -25,23 +25,23 @@
         //        });
     </script>
 
-    <title>Добавление услуги</title>
+    <title>Редактирование услуги</title>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/registration.css">
 
     <div class="container">
-        <h1 class="well">Добавление услуги</h1>
+        <h1 class="well">Редактирование услуги</h1>
         <div class="col-lg-12 well">
             <div class="row">
-                <form:form method="POST" id="register" action="/admin/addService">
+                <form:form method="POST" id="register" action="/admin/updateService/${command.id}">
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-4 form-group">
-                                <label>Тип *</label>
+                                <label>Тип</label>
                                 <form:input id="type" cssClass="form-control" path="type" required="required" placeholder="Тип"/>
                             </div>
                             <div class="col-sm-4 form-group">
-                                <label>Период *</label>
+                                <label>Период</label>
                                 <form:select path="period" cssClass="form-control" id="period">
                                     <form:option value="День" label="День"/>
                                     <form:option value="Неделя" label="Неделя"/>
@@ -52,7 +52,7 @@
                                 </form:select>
                             </div>
                             <div class="col-sm-4 form-group">
-                                <label>Цена *</label>
+                                <label>Цена</label>
                                 <form:input id="price" cssClass="form-control" path="price" required="required" placeholder="Цена"/>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 form-group"><button type="submit" class="btn btn-lg btn-success" id="submitButton">Добавить</button></div>
+                            <div class="col-sm-4 form-group"><button type="submit" class="btn btn-lg btn-success" id="submitButton">Редактировать</button></div>
                             <div class="col-sm-6 form-group"><button type="reset" class="btn btn-lg btn-warning">Очистить</button></div>
                             <div><a href="<c:url value="/admin"/>"><button type="button" class="btn btn-lg btn-danger">Отмена</button></a></div>
                         </div>
@@ -74,3 +74,4 @@
         </div>
     </div>
 </tag:layout>
+

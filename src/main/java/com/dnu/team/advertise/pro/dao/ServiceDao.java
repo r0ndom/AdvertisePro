@@ -28,4 +28,16 @@ public class ServiceDao {
     public List<Service> search(ServiceSearchFilter serviceSearchFilter) {
         return mapper.search(serviceSearchFilter);
     }
+
+    public void update(Service service) {
+        mapper.update(service);
+    }
+
+    public Service getById(String id) {
+        return mapper.getById(id);
+    }
+
+    public void delete(String id) {
+        mapper.delete(id);
+    }
 }

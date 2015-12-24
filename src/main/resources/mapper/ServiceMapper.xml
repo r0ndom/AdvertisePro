@@ -15,6 +15,10 @@
         SELECT * FROM services;
     </select>
 
+    <select id="getById" resultMap="getServiceResultMap">
+        SELECT * FROM services AS s WHERE s.ID = #{id};
+    </select>
+
     <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Service" statementType="CALLABLE">
         insert into services VALUES (#{id}, #{type}, #{price}, #{period});
     </insert>
@@ -32,5 +36,13 @@
             </if>
         </where>
     </select>
+
+    <update id="update" parameterType="com.dnu.team.advertise.pro.model.Service" statementType="CALLABLE">
+        update services AS s set s.aTYPE = #{type}, s.price = #{price}, s.period = #{period} where s.ID = #{id};
+    </update>
+
+    <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.Service" statementType="CALLABLE">
+        delete from services where services.ID = #{id};
+    </delete>
 
 </mapper>

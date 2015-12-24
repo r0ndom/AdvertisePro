@@ -36,6 +36,7 @@ public class AdminController {
     private static final String CREATE_AGENT = "admin/createAgent";
     private static final String UPDATE_USER = "admin/updateUser";
     private static final String ADD_SERVICE = "admin/addService";
+    private static final String UPDATE_SERVICE = "admin/updateService";
 
     @RequestMapping(method = RequestMethod.GET)
     ModelAndView getAdminPage() {
@@ -104,9 +105,35 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @RequestMapping(value = "/updateService/{id}", method = RequestMethod.GET)
+    ModelAndView updateService(@PathVariable("id") String id) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(UPDATE_SERVICE);
+        mav.addObject("command", serviceDao.getById(id));
+        mav.addObject("error", View.getIsCreate());
+        View.setIsCreate(true);
+        return mav;
+    }
+
+    @RequestMapping(value = "/updateService/{id}", method = RequestMethod.POST)
+    String updateService(@ModelAttribute("service") Service service, @PathVariable("id") String id) {
+        if (serviceDao.getByTypeAndPeriod(service) != null) {
+            View.setIsCreate(false);
+            return "redirect:/admin/updateService/{id}";
+        }
+        serviceDao.update(service);
+        return "redirect:/admin";
+    }
+
     @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.GET)
     String deleteUser(@PathVariable("id") String id) {
         userDao.delete(id);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/deleteService/{id}", method = RequestMethod.GET)
+    String deleteService(@PathVariable("id") String id) {
+        serviceDao.delete(id);
         return "redirect:/admin";
     }
 

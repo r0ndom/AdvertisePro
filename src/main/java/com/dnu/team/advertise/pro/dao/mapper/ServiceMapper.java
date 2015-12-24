@@ -10,4 +10,7 @@ public interface ServiceMapper {
     void insert(Service service);
     Service getByTypeAndPeriod(Service service);
     List<Service> search(ServiceSearchFilter serviceSearchFilter);
+    void update(Service service);
+    Service getById(String id);
+    void delete(String id);
 }
