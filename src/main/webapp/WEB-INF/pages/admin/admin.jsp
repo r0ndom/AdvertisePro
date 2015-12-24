@@ -50,7 +50,7 @@
                     <a href="#"> Услуги</a>
                 </li>
                 <li>
-                    <a href="#"> Прайс-лист</a>
+                    <a href="#"> Места</a>
                 </li>
             </ul>
         </div>
@@ -80,11 +80,6 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 
 <script type="text/javascript">
-//    window.onload = function() {
-//        if (document.referrer != 'http://localhost:8080/login')
-//            window.history.forward();
-//    };
-
     $(document).ready(function() {
         $('#menu').find('li').click(function() {
             var activeLiIndex = $(this).index();

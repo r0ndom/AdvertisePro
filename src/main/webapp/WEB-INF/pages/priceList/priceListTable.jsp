@@ -6,14 +6,15 @@
     <thead>
     <tr>
         <th>Город</th>
-        <th>Район</th>
-        <th>Координаты</th>
+        <th>Улица</th>
         <th>Цена</th>
-        <th></th>
+        <th>Тип</th>
+        <th>Период</th>
     </tr>
     </thead>
     <tbody>
     <tr>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
