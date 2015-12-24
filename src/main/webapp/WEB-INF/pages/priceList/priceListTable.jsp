@@ -4,7 +4,7 @@
 
 <table class="table">
     <thead>
-    <tr>
+        <tr>
         <th>Город</th>
         <th>Улица</th>
         <th>Цена</th>
@@ -13,12 +13,13 @@
     </tr>
     </thead>
     <tbody>
+    <c:forEach items="${places}" var="place">
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>${place.city}</td>
+        <td>${place.street}</td>
+        <td>${place.price}</td>
+        <td>${place.serviceType}</td>
+        <td>${place.servicePeriod}</td>
         <td>
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -32,12 +33,13 @@
             </div>
         </td>
     </tr>
+    </c:forEach>
     </tbody>
 </table>
 
 <div style="text-align: center; margin-top: 50px; margin-bottom: 90px">
-    <button id="addUser" class="btn btn-primary"
+    <a href="<c:url value="/admin/addPlace"/>"><button id="addUser" class="btn btn-primary"
             data-toggle="modal" data-target="#createUserModal">
         Добавить место
-    </button>
+    </button></a>
 </div>

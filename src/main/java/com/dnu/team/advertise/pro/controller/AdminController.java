@@ -1,9 +1,12 @@
 package com.dnu.team.advertise.pro.controller;
 
+import com.dnu.team.advertise.pro.dao.PlaceDao;
 import com.dnu.team.advertise.pro.dao.ServiceDao;
 import com.dnu.team.advertise.pro.dao.UserDao;
+import com.dnu.team.advertise.pro.model.Place;
 import com.dnu.team.advertise.pro.model.Service;
 import com.dnu.team.advertise.pro.model.User;
+import com.dnu.team.advertise.pro.service.PlaceService;
 import com.dnu.team.advertise.pro.service.UserService;
 import com.dnu.team.advertise.pro.service.View;
 import com.dnu.team.advertise.pro.service.ServiceService;
@@ -26,10 +29,16 @@ public class AdminController {
     ServiceDao serviceDao;
 
     @Autowired
+    PlaceDao placeDao;
+
+    @Autowired
     UserService userService;
 
     @Autowired
     ServiceService serviceService;
+
+    @Autowired
+    PlaceService placeService;
 
     private static final String ADMIN = "admin/admin";
     private static final String INFO = "admin/info";
@@ -37,6 +46,7 @@ public class AdminController {
     private static final String UPDATE_USER = "admin/updateUser";
     private static final String ADD_SERVICE = "admin/addService";
     private static final String UPDATE_SERVICE = "admin/updateService";
+    private static final String ADD_PLACE = "admin/addPlace";
 
     @RequestMapping(method = RequestMethod.GET)
     ModelAndView getAdminPage() {
@@ -74,6 +84,17 @@ public class AdminController {
         return mav;
     }
 
+    @RequestMapping(value = "/addPlace", method = RequestMethod.GET)
+    ModelAndView addPlace() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(ADD_PLACE);
+        mav.addObject("command", new Place());
+        mav.addObject("error", View.getIsCreate());
+        mav.addObject("services", serviceDao.getTypesAndPeriods());
+        View.setIsCreate(true);
+        return mav;
+    }
+
     @RequestMapping(value = "/agentRegistration", method = RequestMethod.POST)
     public String register(@ModelAttribute("user") User user) {
         if (userDao.findByLogin(user.getCredentials().getLogin()) != null) {
@@ -91,6 +112,16 @@ public class AdminController {
             return "redirect:/admin/addService";
         }
         serviceService.insert(service);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/addPlace", method = RequestMethod.POST)
+    public String addPlace(@ModelAttribute("place") Place place) {
+        if (placeService.getByCityStreetTypePeriod(place) != null) {
+            View.setIsCreate(false);
+            return "redirect:/admin/addPlace";
+        }
+        placeService.insert(place);
         return "redirect:/admin";
     }
 

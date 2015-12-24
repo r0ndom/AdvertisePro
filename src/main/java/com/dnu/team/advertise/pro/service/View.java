@@ -3,6 +3,7 @@ package com.dnu.team.advertise.pro.service;
 public class View {
     private static Object adminUserData;
     private static Object adminServiceData;
+    private static Object adminPlaceData;
     private static boolean isCreate = true;
 
     public static void setAdminUserData(Object data) {
@@ -27,5 +28,13 @@ public class View {
 
     public static void setIsCreate(boolean isCreate) {
         View.isCreate = isCreate;
+    }
+
+    public static Object getAdminPlaceData() {
+        return adminPlaceData;
+    }
+
+    public static void setAdminPlaceData(Object adminPlaceData) {
+        View.adminPlaceData = adminPlaceData;
     }
 }

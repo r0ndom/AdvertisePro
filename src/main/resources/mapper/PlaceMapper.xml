@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dnu.team.advertise.pro.dao.mapper.PlaceMapper" >
+
+    <resultMap id="getPlaceResultMap" type="com.dnu.team.advertise.pro.model.Place">
+        <id property="id" column="ID"/>
+        <result property="city" column="CITY"/>
+        <result property="street" column="STREET"/>
+        <result property="price" column="PRICE"/>
+        <result property="serviceType" column="SERVICE_TYPE"/>
+        <result property="servicePeriod" column="SERVICE_PERIOD"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="getPlaceResultMap">
+        select * from places;
+    </select>
+
+    <select id="getByCityStreetTypePeriod" resultMap="getPlaceResultMap">
+        select * from places AS p where p.CITY = #{city} AND p.STREET = #{street} AND p.SERVICE_TYPE = #{serviceType} AND p.SERVICE_PERIOD = #{servicePeriod};
+    </select>
+
+    <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Place" statementType="CALLABLE">
+        insert into places values (#{id}, #{city}, #{street}, #{price}, #{serviceType}, #{servicePeriod});
+    </insert>
+</mapper>

@@ -40,4 +40,8 @@ public class ServiceDao {
     public void delete(String id) {
         mapper.delete(id);
     }
+
+    public List<Service> getTypesAndPeriods() {
+        return mapper.getTypesAndPeriods();
+    }
 }

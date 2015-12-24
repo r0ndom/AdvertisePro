@@ -45,4 +45,8 @@
         delete from services where services.ID = #{id};
     </delete>
 
+    <select id="getTypesAndPeriods" resultMap="getServiceResultMap">
+        SELECT services.aTYPE, services.PERIOD FROM services;
+    </select>
+
 </mapper>
