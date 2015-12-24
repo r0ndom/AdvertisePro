@@ -117,10 +117,6 @@ public class AdminController {
 
     @RequestMapping(value = "/updateService/{id}", method = RequestMethod.POST)
     String updateService(@ModelAttribute("service") Service service, @PathVariable("id") String id) {
-        if (serviceDao.getByTypeAndPeriod(service) != null) {
-            View.setIsCreate(false);
-            return "redirect:/admin/updateService/{id}";
-        }
         serviceDao.update(service);
         return "redirect:/admin";
     }

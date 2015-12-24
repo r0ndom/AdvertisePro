@@ -38,11 +38,11 @@
                         <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>Тип</label>
-                                <form:input id="type" cssClass="form-control" path="type" required="required" placeholder="Тип"/>
+                                <form:input id="type" cssClass="form-control" path="type" required="required" placeholder="Тип" disabled="true"/>
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Период</label>
-                                <form:select path="period" cssClass="form-control" id="period">
+                                <form:select path="period" cssClass="form-control" id="period" disabled="true">
                                     <form:option value="День" label="День"/>
                                     <form:option value="Неделя" label="Неделя"/>
                                     <form:option value="Месяц" label="Месяц"/>

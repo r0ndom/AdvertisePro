@@ -38,7 +38,7 @@
     </select>
 
     <update id="update" parameterType="com.dnu.team.advertise.pro.model.Service" statementType="CALLABLE">
-        update services AS s set s.aTYPE = #{type}, s.price = #{price}, s.period = #{period} where s.ID = #{id};
+        update services AS s set s.price = #{price} where s.ID = #{id}, s.aTYPE = #{type}, s.period = #{period} ;
     </update>
 
     <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.Service" statementType="CALLABLE">
