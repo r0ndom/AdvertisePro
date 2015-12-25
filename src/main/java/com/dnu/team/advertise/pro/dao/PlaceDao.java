@@ -28,4 +28,16 @@ public class PlaceDao {
     public List<Place> search(PlaceSearchFilter placeSearchFilter) {
         return mapper.search(placeSearchFilter);
     }
+
+    public Place getById(String id) {
+        return mapper.getById(id);
+    }
+
+    public void update(Place place) {
+        mapper.update(place);
+    }
+
+    public void delete(String id) {
+        mapper.delete(id);
+    }
 }

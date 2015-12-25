@@ -10,4 +10,7 @@ public interface PlaceMapper {
     List<Place> getAll();
     Place getByCityStreetTypePeriod(Place place);
     List<Place> search(PlaceSearchFilter placeSearchFilter);
+    Place getById(String id);
+    void update(Place place);
+    void delete(String id);
 }

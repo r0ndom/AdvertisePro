@@ -23,9 +23,20 @@ public class PlaceService {
     }
 
     public Place getByCityStreetTypePeriod(Place place) {
-        String typeAndPeriod = place.getServiceType();
-        place.setServiceType(typeAndPeriod.split(" - ")[0]);
-        place.setServicePeriod(typeAndPeriod.split(" - ")[1]);
+        if (place.getServiceType().split(" - ").length == 2) {
+            String typeAndPeriod = place.getServiceType();
+            place.setServiceType(typeAndPeriod.split(" - ")[0]);
+            place.setServicePeriod(typeAndPeriod.split(" - ")[1]);
+        }
         return placeDao.getByCityStreetTypePeriod(place);
+    }
+
+    public void update(Place place) {
+        if (place.getServiceType().split(" - ").length == 2) {
+            String typeAndPeriod = place.getServiceType();
+            place.setServiceType(typeAndPeriod.split(" - ")[0]);
+            place.setServicePeriod(typeAndPeriod.split(" - ")[1]);
+        }
+        placeDao.update(place);
     }
 }

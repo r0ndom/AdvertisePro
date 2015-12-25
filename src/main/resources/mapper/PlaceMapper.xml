@@ -18,7 +18,11 @@
     </select>
 
     <select id="getByCityStreetTypePeriod" resultMap="getPlaceResultMap">
-        select * from places AS p where p.CITY = #{city} AND p.STREET = #{street} AND p.SERVICE_TYPE = #{serviceType} AND p.SERVICE_PERIOD = #{servicePeriod};
+        select * from places as p where p.CITY = #{city} AND p.STREET = #{street} AND p.SERVICE_TYPE = #{serviceType} AND p.SERVICE_PERIOD = #{servicePeriod};
+    </select>
+
+    <select id="getById" resultMap="getPlaceResultMap">
+        select * from places as p where p.ID = #{id};
     </select>
 
     <select id="search" resultMap="getPlaceResultMap" parameterType="com.dnu.team.advertise.pro.model.Place">
@@ -35,4 +39,12 @@
     <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Place" statementType="CALLABLE">
         insert into places values (#{id}, #{city}, #{street}, #{price}, #{serviceType}, #{servicePeriod});
     </insert>
+
+    <update id="update" parameterType="com.dnu.team.advertise.pro.model.Place" statementType="CALLABLE">
+        update places as p set p.CITY = #{city}, p.STREET = #{street}, p.PRICE = #{price}, p.SERVICE_TYPE = #{serviceType}, p.SERVICE_PERIOD = #{servicePeriod} where p.ID = #{id};
+    </update>
+
+    <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.Place" statementType="CALLABLE">
+        delete from places where places.ID = #{id};
+    </delete>
 </mapper>

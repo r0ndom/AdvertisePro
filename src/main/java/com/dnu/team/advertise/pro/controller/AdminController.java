@@ -47,6 +47,7 @@ public class AdminController {
     private static final String ADD_SERVICE = "admin/addService";
     private static final String UPDATE_SERVICE = "admin/updateService";
     private static final String ADD_PLACE = "admin/addPlace";
+    private static final String UPDATE_PLACE = "admin/updatePlace";
     private String errorMessage;
 
     @RequestMapping(method = RequestMethod.GET)
@@ -167,6 +168,27 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @RequestMapping(value = "/updatePlace/{id}", method = RequestMethod.GET)
+    ModelAndView updatePlace(@PathVariable("id") String id) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(UPDATE_PLACE);
+        mav.addObject("command", placeDao.getById(id));
+        mav.addObject("error", View.getIsCreate());
+        mav.addObject("services", serviceDao.getTypesAndPeriods());
+        View.setIsCreate(true);
+        return mav;
+    }
+
+    @RequestMapping(value = "/updatePlace/{id}", method = RequestMethod.POST)
+    String updatePlace(@ModelAttribute("place") Place place, @PathVariable("id") String id) {
+        if (placeService.getByCityStreetTypePeriod(place) != null && !placeService.getByCityStreetTypePeriod(place).getId().equals(id)) {
+            View.setIsCreate(false);
+            return "redirect:/admin/updatePlace/{id}";
+        }
+        placeService.update(place);
+        return "redirect:/admin";
+    }
+
     @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.GET)
     String deleteUser(@PathVariable("id") String id) {
         userDao.delete(id);
@@ -176,6 +198,12 @@ public class AdminController {
     @RequestMapping(value = "/deleteService/{id}", method = RequestMethod.GET)
     String deleteService(@PathVariable("id") String id) {
         serviceDao.delete(id);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/deletePlace/{id}", method = RequestMethod.GET)
+    String deletePlace(@PathVariable("id") String id) {
+        placeDao.delete(id);
         return "redirect:/admin";
     }
 
