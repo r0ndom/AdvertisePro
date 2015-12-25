@@ -197,6 +197,10 @@ public class AdminController {
 
     @RequestMapping(value = "/deleteService/{id}", method = RequestMethod.GET)
     String deleteService(@PathVariable("id") String id) {
+        if (placeDao.getByTypePeriod(serviceDao.getById(id)) != null) {
+            View.setIsCreate(false);
+            return "redirect:/admin";
+        }
         serviceDao.delete(id);
         return "redirect:/admin";
     }

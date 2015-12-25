@@ -33,6 +33,10 @@ public class ServiceController {
         if (View.getAdminServiceData() == null) View.setAdminServiceData(serviceDao.getAll());
         mav.addObject("services", View.getAdminServiceData());
         View.setAdminServiceData(null);
+
+        mav.addObject("error", View.getIsCreate());
+        View.setIsCreate(true);
+
         return mav;
     }
 

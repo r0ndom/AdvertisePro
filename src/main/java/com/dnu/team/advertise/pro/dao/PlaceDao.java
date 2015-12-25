@@ -2,6 +2,7 @@ package com.dnu.team.advertise.pro.dao;
 
 import com.dnu.team.advertise.pro.dao.mapper.PlaceMapper;
 import com.dnu.team.advertise.pro.model.Place;
+import com.dnu.team.advertise.pro.model.Service;
 import com.dnu.team.advertise.pro.model.filter.PlaceSearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,5 +40,9 @@ public class PlaceDao {
 
     public void delete(String id) {
         mapper.delete(id);
+    }
+
+    public List<Place> getByTypePeriod(Service service) {
+        return mapper.getByTypePeriod(service);
     }
 }

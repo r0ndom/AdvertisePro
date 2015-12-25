@@ -25,7 +25,11 @@
         select * from places as p where p.ID = #{id};
     </select>
 
-    <select id="search" resultMap="getPlaceResultMap" parameterType="com.dnu.team.advertise.pro.model.Place">
+    <select id="getByTypePeriod" resultMap="getPlaceResultMap" parameterType="com.dnu.team.advertise.pro.model.Service">
+        select * from places as p where p.SERVICE_TYPE = #{type} and p.SERVICE_PERIOD = #{period};
+    </select>
+
+    <select id="search" resultMap="getPlaceResultMap" parameterType="com.dnu.team.advertise.pro.model.filter.PlaceSearchFilter">
         select * from places as p
         <where>
             <if test="city != null and city != ''">p.CITY = #{city}</if>
