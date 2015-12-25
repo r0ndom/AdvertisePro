@@ -19,6 +19,10 @@
 
     <script>
         $(document).ready(function() {
+            jQuery(function($){
+                $("#phone").mask("+99(999)999-99-99");
+            });
+
             $("#postCode").keydown(function (e) {
                 e = e || event;
                 if (e.ctrlKey || e.altKey || e.metaKey) return;
