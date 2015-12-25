@@ -43,7 +43,7 @@
                             <div class="col-sm-4 form-group">
                                 <label>Тип *</label>
                                 <form:select path="type" cssClass="form-control" id="type" required="required">
-                                    <form:option value="${null}" label="Выберите тип" disabled="true"/>
+                                    <form:option value="${null}" label="Выберите тип"/>
                                     <form:option value="Билборд" label="Билборд"/>
                                     <form:option value="Растяжка" label="Растяжка"/>
                                     <form:option value="В транспорте" label="В транспорте"/>
@@ -59,7 +59,7 @@
                             <div class="col-sm-4 form-group">
                                 <label>Период *</label>
                                 <form:select path="period" cssClass="form-control" id="period" required="required">
-                                    <form:option value="${null}" label="Выберите период" disabled="true"/>
+                                    <form:option value="${null}" label="Выберите период"/>
                                     <form:option value="День" label="День"/>
                                     <form:option value="Неделя" label="Неделя"/>
                                     <form:option value="Месяц" label="Месяц"/>

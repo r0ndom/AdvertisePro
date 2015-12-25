@@ -18,11 +18,15 @@
     </style>
 
     <script>
-        //        $(document).ready(function() {
-        //            $("#submitButton").click(function() {
-        //
-        //            });
-        //        });
+        $(document).ready(function() {
+            $("#price").keydown(function (e) {
+                e = e || event;
+                if (e.ctrlKey || e.altKey || e.metaKey) return;
+                var  chr = String.fromCharCode(e.keyCode);
+                if (chr == null) return;
+                if (e.keyCode != 8 && chr < '0' || chr > '9') return false;
+            });
+        });
     </script>
 
     <title>Добавление места</title>
@@ -52,7 +56,8 @@
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label>Тип-Период *</label>
-                                <form:select path="serviceType" cssClass="form-control" id="serviceType">
+                                <form:select path="serviceType" cssClass="form-control" id="serviceType" required="required">
+                                    <form:option value="${null}" label="Выберите тип-период"/>
                                     <c:forEach items="${services}" var="service">
                                         <form:option value="${service.type} - ${service.period}" label="${service.type} - ${service.period}"/>
                                     </c:forEach>

@@ -21,6 +21,17 @@
         select * from places AS p where p.CITY = #{city} AND p.STREET = #{street} AND p.SERVICE_TYPE = #{serviceType} AND p.SERVICE_PERIOD = #{servicePeriod};
     </select>
 
+    <select id="search" resultMap="getPlaceResultMap" parameterType="com.dnu.team.advertise.pro.model.Place">
+        select * from places as p
+        <where>
+            <if test="city != null and city != ''">p.CITY = #{city}</if>
+            <if test="street != null and street != ''">p.STREET = #{street}</if>
+            <if test="price != null">ROUND(p.PRICE, 0) = #{price}</if>
+            <if test="type != null and type != ''">p.SERVICE_TYPE = #{type}</if>
+            <if test="period != null and period != ''">p.SERVICE_PERIOD = #{period}</if>
+        </where>
+    </select>
+
     <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Place" statementType="CALLABLE">
         insert into places values (#{id}, #{city}, #{street}, #{price}, #{serviceType}, #{servicePeriod});
     </insert>

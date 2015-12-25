@@ -2,6 +2,7 @@ package com.dnu.team.advertise.pro.dao;
 
 import com.dnu.team.advertise.pro.dao.mapper.PlaceMapper;
 import com.dnu.team.advertise.pro.model.Place;
+import com.dnu.team.advertise.pro.model.filter.PlaceSearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +23,9 @@ public class PlaceDao {
 
     public Place getByCityStreetTypePeriod(Place place) {
         return mapper.getByCityStreetTypePeriod(place);
+    }
+
+    public List<Place> search(PlaceSearchFilter placeSearchFilter) {
+        return mapper.search(placeSearchFilter);
     }
 }

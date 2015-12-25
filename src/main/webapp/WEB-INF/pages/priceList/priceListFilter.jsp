@@ -3,38 +3,62 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<form:form>
+<script>
+    $(document).ready(function() {
+        $("#price").keydown(function (e) {
+            e = e || event;
+            if (e.ctrlKey || e.altKey || e.metaKey) return;
+            var  chr = String.fromCharCode(e.keyCode);
+            if (chr == null) return;
+            if (e.keyCode != 8 && chr < '0' || chr > '9') return false;
+        });
+    });
+</script>
+
+<form:form method="POST" action="/priceListTable">
     <div class="col-sm-12">
         <div class="row">
             <div class="col-sm-4 form-group">
                 <label>Город</label>
-                <input type="text" placeholder="Город" class="form-control" id="city">
+                <form:input id="city" cssClass="form-control" path="city"  placeholder="Город"/>
             </div>
             <div class="col-sm-4 form-group">
                 <label>Улица</label>
-                <input type="text" placeholder="Улица" class="form-control" id="district">
+                <form:input id="street" cssClass="form-control" path="street"  placeholder="Улица"/>
             </div>
             <div class="col-sm-4 form-group">
-                <label>Тип</label>
-                <%--<form:input id="type" cssClass="form-control" path="type"  placeholder="Тип"/>--%>
+                <label>Цена</label>
+                <form:input id="price" cssClass="form-control" path="price"  placeholder="Цена"/>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4 form-group">
-                <label>Цена</label>
-                <%--<form:input id="type" cssClass="form-control" path="price"  placeholder="Цена" required="required"/>--%>
+            <div class="col-sm-6 form-group">
+                <label>Тип</label>
+                <form:select path="type" cssClass="form-control" id="type">
+                    <form:option value="${null}" label="Выберите тип" disabled="true"/>
+                    <form:option value="Билборд" label="Билборд"/>
+                    <form:option value="Растяжка" label="Растяжка"/>
+                    <form:option value="В транспорте" label="В транспорте"/>
+                    <form:option value="На транспорте" label="На транспорте"/>
+                    <form:option value="Метро" label="Метро"/>
+                    <form:option value="Интернет баннеры" label="Интернет баннеры"/>
+                    <form:option value="Печатные СМИ" label="Печатные СМИ"/>
+                    <form:option value="Телевидение - бегущая строка" label="Телевидение - бегущая строка"/>
+                    <form:option value="Телевидение - видеоролик" label="Телевидение - видеоролик"/>
+                    <form:option value="Радио" label="Радио"/>
+                </form:select>
             </div>
-            <div class="col-sm-4 form-group">
+            <div class="col-sm-6 form-group">
                 <label>Период</label>
-                <%--<form:select path="period" cssClass="form-control" id="period">--%>
-                    <%--<form:option value="${null}" label="Выберите период" disabled="true"/>--%>
-                    <%--<form:option value="День" label="День"/>--%>
-                    <%--<form:option value="Неделя" label="Неделя"/>--%>
-                    <%--<form:option value="Месяц" label="Месяц"/>--%>
-                    <%--<form:option value="Квартал" label="Квартал"/>--%>
-                    <%--<form:option value="Полгода" label="Полгода"/>--%>
-                    <%--<form:option value="Год" label="Год"/>--%>
-                <%--</form:select>--%>
+                <form:select path="period" cssClass="form-control" id="period">
+                    <form:option value="${null}" label="Выберите период" disabled="true"/>
+                    <form:option value="День" label="День"/>
+                    <form:option value="Неделя" label="Неделя"/>
+                    <form:option value="Месяц" label="Месяц"/>
+                    <form:option value="Квартал" label="Квартал"/>
+                    <form:option value="Полгода" label="Полгода"/>
+                    <form:option value="Год" label="Год"/>
+                </form:select>
             </div>
         </div>
         <div class="row">

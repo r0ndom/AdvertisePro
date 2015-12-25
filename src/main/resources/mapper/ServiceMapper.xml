@@ -30,7 +30,7 @@
     <select id="search" resultMap="getServiceResultMap" parameterType="com.dnu.team.advertise.pro.model.filter.ServiceSearchFilter">
         SELECT * FROM services
         <where>
-            <if test="price != null">services.PRICE = ROUND(#{price}, 0)</if>
+            <if test="price != null">ROUND(services.PRICE, 0) = #{price}</if>
             <if test="type != null and type != ''">AND services.aTYPE = #{type}</if>
             <if test="period != null and period != ''">AND services.PERIOD = #{period}
             </if>
