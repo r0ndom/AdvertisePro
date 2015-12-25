@@ -24,7 +24,7 @@
                 if (e.ctrlKey || e.altKey || e.metaKey) return;
                 var  chr = String.fromCharCode(e.keyCode);
                 if (chr == null) return;
-                if (chr < '0' || chr > '9') return false;
+                if (e.keyCode != 8 && chr < '0' || chr > '9') return false;
             });
         });
     </script>

@@ -3,14 +3,14 @@ package com.dnu.team.advertise.pro.model.filter;
 public class ServiceSearchFilter {
     private String id;
     private String type;
-    private double price;
+    private Double price;
     private String period;
 
     public ServiceSearchFilter() {
 
     }
 
-    public ServiceSearchFilter(String id, String type, double price, String period) {
+    public ServiceSearchFilter(String id, String type, Double price, String period) {
         this.id = id;
         this.type = type;
         this.price = price;
@@ -33,11 +33,11 @@ public class ServiceSearchFilter {
         this.type = type;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

@@ -3,6 +3,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<script>
+    $(document).ready(function() {
+        $("#postCode").keydown(function (e) {
+            e = e || event;
+            if (e.ctrlKey || e.altKey || e.metaKey) return;
+            var  chr = String.fromCharCode(e.keyCode);
+            if (chr == null) return;
+            if (e.keyCode != 8 && chr < '0' || chr > '9') return false;
+        });
+    });
+</script>
+
 <form:form method="POST" action="/userTable">
     <div class="col-sm-12">
         <div class="row">

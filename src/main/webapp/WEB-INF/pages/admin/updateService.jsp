@@ -18,11 +18,15 @@
     </style>
 
     <script>
-        //        $(document).ready(function() {
-        //            $("#submitButton").click(function() {
-        //
-        //            });
-        //        });
+        $(document).ready(function() {
+            $("#price").keydown(function (e) {
+                e = e || event;
+                if (e.ctrlKey || e.altKey || e.metaKey) return;
+                var  chr = String.fromCharCode(e.keyCode);
+                if (chr == null) return;
+                if (e.keyCode != 8 && chr < '0' || chr > '9') return false;
+            });
+        });
     </script>
 
     <title>Редактирование услуги</title>
@@ -38,11 +42,24 @@
                         <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>Тип</label>
-                                <form:input id="type" cssClass="form-control" path="type" required="required" placeholder="Тип" disabled="true"/>
+                                <form:select path="type" cssClass="form-control" id="type" disabled="true">
+                                    <form:option value="${null}" label="Выберите тип" disabled="true"/>
+                                    <form:option value="Билборд" label="Билборд"/>
+                                    <form:option value="Растяжка" label="Растяжка"/>
+                                    <form:option value="В транспорте" label="В транспорте"/>
+                                    <form:option value="На транспорте" label="На транспорте"/>
+                                    <form:option value="Метро" label="Метро"/>
+                                    <form:option value="Интернет баннеры" label="Интернет баннеры"/>
+                                    <form:option value="Печатные СМИ" label="Печатные СМИ"/>
+                                    <form:option value="Телевидение - бегущая строка" label="Телевидение - бегущая строка"/>
+                                    <form:option value="Телевидение - видеоролик" label="Телевидение - видеоролик"/>
+                                    <form:option value="Радио" label="Радио"/>
+                                </form:select>
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Период</label>
                                 <form:select path="period" cssClass="form-control" id="period" disabled="true">
+                                    <form:option value="${null}" label="Выберите период" disabled="true"/>
                                     <form:option value="День" label="День"/>
                                     <form:option value="Неделя" label="Неделя"/>
                                     <form:option value="Месяц" label="Месяц"/>

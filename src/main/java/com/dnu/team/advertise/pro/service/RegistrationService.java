@@ -18,7 +18,7 @@ public class RegistrationService {
     private static final Pattern phone = Pattern.compile("^\\+[0-9]{2}\\([0-9]{3}\\)[0-9]{3}-[0-9]{2}-[0-9]{2}$", Pattern.MULTILINE | Pattern.UNICODE_CASE);
 
     public String checkFormRegistrationData(User user) {
-        if (!checkLogin(user.getCredentials().getLogin())) return "Ошибка! Неверный формат логина! Логин должен иметь длину от 6 до 20 символов и состоять из латинских букв, цифр, символов подчеркивания и тире, а также начинаться с буквы!";
+        if (user.getCredentials().getLogin() != null && !checkLogin(user.getCredentials().getLogin())) return "Ошибка! Неверный формат логина! Логин должен иметь длину от 6 до 20 символов и состоять из латинских букв, цифр, символов подчеркивания и тире, а также начинаться с буквы!";
         if (!checkEmail(user.getContacts().getEmail())) return "Ошибка! Неверный формат email! Email должен иметь один из следующих форматов: a@asd.com, test@mail.ru, asda_sd@asd.info";
         if (!user.getCredentials().getPassword().equals(user.getCredentials().getSecondPassword())) return "Ошибка! Пароли не совпадают!";
         if (!checkPassword(user.getCredentials().getPassword())) return "Ошибка! Неверный формат пароля! Пароль должен содержать символы латинского алфавита и цифры, а также иметь длину от 6 до 20 символов";

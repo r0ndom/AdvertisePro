@@ -6,10 +6,7 @@ import com.dnu.team.advertise.pro.dao.UserDao;
 import com.dnu.team.advertise.pro.model.Place;
 import com.dnu.team.advertise.pro.model.Service;
 import com.dnu.team.advertise.pro.model.User;
-import com.dnu.team.advertise.pro.service.PlaceService;
-import com.dnu.team.advertise.pro.service.UserService;
-import com.dnu.team.advertise.pro.service.View;
-import com.dnu.team.advertise.pro.service.ServiceService;
+import com.dnu.team.advertise.pro.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,6 +37,9 @@ public class AdminController {
     @Autowired
     PlaceService placeService;
 
+    @Autowired
+    RegistrationService registrationService;
+
     private static final String ADMIN = "admin/admin";
     private static final String INFO = "admin/info";
     private static final String CREATE_AGENT = "admin/createAgent";
@@ -47,6 +47,7 @@ public class AdminController {
     private static final String ADD_SERVICE = "admin/addService";
     private static final String UPDATE_SERVICE = "admin/updateService";
     private static final String ADD_PLACE = "admin/addPlace";
+    private String errorMessage;
 
     @RequestMapping(method = RequestMethod.GET)
     ModelAndView getAdminPage() {
@@ -70,6 +71,7 @@ public class AdminController {
         mav.setViewName(CREATE_AGENT);
         mav.addObject("command", new User());
         mav.addObject("error", View.getIsCreate());
+        mav.addObject("errorMessage", errorMessage);
         View.setIsCreate(true);
         return mav;
     }
@@ -97,7 +99,9 @@ public class AdminController {
 
     @RequestMapping(value = "/agentRegistration", method = RequestMethod.POST)
     public String register(@ModelAttribute("user") User user) {
-        if (userDao.findByLogin(user.getCredentials().getLogin()) != null) {
+        errorMessage = registrationService.checkFormRegistrationData(user);
+        if (userDao.findByLogin(user.getCredentials().getLogin()) != null || errorMessage != null) {
+            if (errorMessage == null) errorMessage = "Пользователь с данным логином уже существует!";
             View.setIsCreate(false);
             return "redirect:/admin/agentRegistration";
         }
@@ -127,11 +131,22 @@ public class AdminController {
 
     @RequestMapping(value = "/updateUser/{id}", method = RequestMethod.GET)
     ModelAndView updateUser(@PathVariable("id") String id) {
-        return new ModelAndView(UPDATE_USER, "command", userDao.get(id));
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(UPDATE_USER);
+        mav.addObject("command", userDao.get(id));
+        mav.addObject("error", View.getIsCreate());
+        mav.addObject("errorMessage", errorMessage);
+        View.setIsCreate(true);
+        return mav;
     }
 
     @RequestMapping(value = "/updateUser/{id}", method = RequestMethod.POST)
     String updateUser(@ModelAttribute("user") User user, @PathVariable("id") String id) {
+        errorMessage = registrationService.checkFormRegistrationData(user);
+        if (errorMessage != null) {
+            View.setIsCreate(false);
+            return "redirect:/admin/updateUser/{id}";
+        }
         userService.update(user);
         return "redirect:/admin";
     }

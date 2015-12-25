@@ -4,7 +4,7 @@ public class Place {
     String id;
     String city;
     String street;
-    double price;
+    Double price;
     String serviceType;
     String servicePeriod;
 
@@ -12,7 +12,7 @@ public class Place {
 
     }
 
-    public Place(String id, String city, String street, double price, String serviceType, String servicePeriod) {
+    public Place(String id, String city, String street, Double price, String serviceType, String servicePeriod) {
         this.id = id;
         this.city = city;
         this.street = street;
@@ -45,11 +45,11 @@ public class Place {
         this.street = street;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

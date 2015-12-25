@@ -18,11 +18,15 @@
     </style>
 
     <script>
-        //        $(document).ready(function() {
-        //            $("#submitButton").click(function() {
-        //
-        //            });
-        //        });
+        $(document).ready(function() {
+            $("#postCode").keydown(function (e) {
+                e = e || event;
+                if (e.ctrlKey || e.altKey || e.metaKey) return;
+                var  chr = String.fromCharCode(e.keyCode);
+                if (chr == null) return;
+                if (e.keyCode != 8 && chr < '0' || chr > '9') return false;
+            });
+        });
     </script>
 
     <title>Создание агента</title>
@@ -54,7 +58,7 @@
                             </div>
                             <div class="col-sm-6 form-group">
                                 <label>Повторите пароль *</label>
-                                <input type="password" placeholder="Пароль" class="form-control" id="secondPassword">
+                                <form:password id="secondPassword" cssClass="form-control" path="credentials.secondPassword" required="required" placeholder="Пароль"/>
                             </div>
                         </div>
                         <div class="row">
@@ -98,13 +102,13 @@
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label>Номер телефона *</label>
-                                <form:input id="phone" cssClass="form-control" path="contacts.phone" required="required" placeholder="Номер телефона"/>
+                                <form:input id="phone" cssClass="form-control" path="contacts.phone" required="required" placeholder="+__(___)___-__-__"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-7">
                                 <c:if test="${error == false}">
-                                    <div class="error">Пользователь с данным логином уже существует!</div>
+                                    <div class="error">${errorMessage}</div>
                                 </c:if>
                             </div>
                         </div>
