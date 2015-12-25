@@ -4,6 +4,7 @@ public class Credentials {
     private String login;
     private String password;
     private String userId;
+    private String secondPassword;
 
     public String getLogin() {
         return login;
@@ -27,5 +28,13 @@ public class Credentials {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getSecondPassword() {
+        return secondPassword;
+    }
+
+    public void setSecondPassword(String secondPassword) {
+        this.secondPassword = secondPassword;
     }
 }
