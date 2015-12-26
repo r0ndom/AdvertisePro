@@ -5,6 +5,7 @@ public class View {
     private static Object adminServiceData;
     private static Object adminPlaceData;
     private static boolean isCreate = true;
+    private static int pageIndex = 0;
 
     public static void setAdminUserData(Object data) {
         adminUserData = data;
@@ -36,5 +37,13 @@ public class View {
 
     public static void setAdminPlaceData(Object adminPlaceData) {
         View.adminPlaceData = adminPlaceData;
+    }
+
+    public static int getPageIndex() {
+        return pageIndex;
+    }
+
+    public static void setPageIndex(int pageIndex) {
+        View.pageIndex = pageIndex;
     }
 }

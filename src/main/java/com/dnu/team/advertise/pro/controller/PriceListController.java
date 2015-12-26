@@ -36,6 +36,7 @@ public class PriceListController {
     @RequestMapping(value = "/priceListTable", method = RequestMethod.POST)
     String getSearchResults(@ModelAttribute("placeSearchFilter") PlaceSearchFilter placeSearchFilter) {
         View.setAdminPlaceData(placeDao.search(placeSearchFilter));
+        View.setPageIndex(2);
         return "redirect:/admin";
     }
 }

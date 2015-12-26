@@ -55,7 +55,14 @@ public class AdminController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName(ADMIN);
         mav.addObject("adminLogin", userService.getCurrentUser().getCredentials().getLogin());
+        mav.addObject("index", View.getPageIndex());
         return mav;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    String setIndexPage(@PathVariable("id") int id) {
+        View.setPageIndex(id);
+        return "redirect:/admin";
     }
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
@@ -107,6 +114,7 @@ public class AdminController {
             return "redirect:/admin/agentRegistration";
         }
         userService.createAgent(user);
+        View.setPageIndex(0);
         return "redirect:/admin";
     }
 
@@ -117,6 +125,7 @@ public class AdminController {
             return "redirect:/admin/addService";
         }
         serviceService.insert(service);
+        View.setPageIndex(1);
         return "redirect:/admin";
     }
 
@@ -127,6 +136,7 @@ public class AdminController {
             return "redirect:/admin/addPlace";
         }
         placeService.insert(place);
+        View.setPageIndex(2);
         return "redirect:/admin";
     }
 
@@ -149,6 +159,7 @@ public class AdminController {
             return "redirect:/admin/updateUser/{id}";
         }
         userService.update(user);
+        View.setPageIndex(0);
         return "redirect:/admin";
     }
 
@@ -165,6 +176,7 @@ public class AdminController {
     @RequestMapping(value = "/updateService/{id}", method = RequestMethod.POST)
     String updateService(@ModelAttribute("service") Service service, @PathVariable("id") String id) {
         serviceDao.update(service);
+        View.setPageIndex(1);
         return "redirect:/admin";
     }
 
@@ -186,12 +198,14 @@ public class AdminController {
             return "redirect:/admin/updatePlace/{id}";
         }
         placeService.update(place);
+        View.setPageIndex(2);
         return "redirect:/admin";
     }
 
     @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.GET)
     String deleteUser(@PathVariable("id") String id) {
         userDao.delete(id);
+        View.setPageIndex(0);
         return "redirect:/admin";
     }
 
@@ -199,15 +213,18 @@ public class AdminController {
     String deleteService(@PathVariable("id") String id) {
         if (placeDao.getByTypePeriod(serviceDao.getById(id)).size() > 0) {
             View.setIsCreate(false);
+            View.setPageIndex(1);
             return "redirect:/admin";
         }
         serviceDao.delete(id);
+        View.setPageIndex(1);
         return "redirect:/admin";
     }
 
     @RequestMapping(value = "/deletePlace/{id}", method = RequestMethod.GET)
     String deletePlace(@PathVariable("id") String id) {
         placeDao.delete(id);
+        View.setPageIndex(2);
         return "redirect:/admin";
     }
 

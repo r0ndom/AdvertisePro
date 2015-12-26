@@ -36,6 +36,7 @@ public class UserController {
     @RequestMapping(value = "/userTable", method = RequestMethod.POST)
     String getSearchResults(@ModelAttribute("userSearchFilter") UserSearchFilter userSearchFilter) {
         View.setAdminUserData(userDao.search(userSearchFilter));
+        View.setPageIndex(0);
         return "redirect:/admin";
     }
 }

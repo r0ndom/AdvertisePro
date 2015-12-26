@@ -12,6 +12,10 @@
 
     <link href="<c:url value="/resources/css/sb-admin.css"/>" rel="stylesheet">
 
+    <script src="<c:url value="/resources/js/jquery.js"/>"></script>
+
+    <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+
 </head>
 
 <body>
@@ -43,14 +47,14 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav" id="menu">
-                <li>
-                    <a href="#"> Пользователи</a>
+                <li id="li0">
+                    <a href="<c:url value="/admin/0"/>"> Пользователи</a>
                 </li>
-                <li>
-                    <a href="#"> Услуги</a>
+                <li id="li1">
+                    <a href="<c:url value="/admin/1"/>"> Услуги</a>
                 </li>
-                <li>
-                    <a href="#"> Места</a>
+                <li id="li2">
+                    <a href="<c:url value="/admin/2"/>"> Места</a>
                 </li>
             </ul>
         </div>
@@ -75,16 +79,13 @@
 
 </div>
 
-<script src="<c:url value="/resources/js/jquery.js"/>"></script>
-
-<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-
 <script type="text/javascript">
+    var pageContent = $("#pageContent");
+    var tableContent = $("#tableContent");
+
     $(document).ready(function() {
         $('#menu').find('li').click(function() {
             var activeLiIndex = $(this).index();
-            var pageContent = $("#pageContent");
-            var tableContent = $("#tableContent");
             switch (activeLiIndex) {
                 case 0:
                     pageContent.load("/userFilter");
@@ -101,8 +102,22 @@
             }
         });
 
-        $("#pageContent").load("/userFilter");
-        $("#tableContent").load("/userTable");
+        switch (${index}) {
+            case 0:
+                pageContent.load("/userFilter");
+                tableContent.load("/userTable");
+                break;
+            case 1:
+                pageContent.load("/servicesFilter");
+                tableContent.load("/servicesTable");
+                break;
+            case 2:
+                pageContent.load("/priceListFilter");
+                tableContent.load("/priceListTable");
+                break;
+        }
+
+        $("#li" + ${index}).addClass("active");
     });
 </script>
 

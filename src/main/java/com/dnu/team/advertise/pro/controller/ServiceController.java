@@ -43,6 +43,7 @@ public class ServiceController {
     @RequestMapping(value = "/servicesTable", method = RequestMethod.POST)
     String getTable(@ModelAttribute("serviceSearchFilter") ServiceSearchFilter serviceSearchFilter) {
         View.setAdminServiceData(serviceDao.search(serviceSearchFilter));
+        View.setPageIndex(1);
         return "redirect:/admin";
     }
 
