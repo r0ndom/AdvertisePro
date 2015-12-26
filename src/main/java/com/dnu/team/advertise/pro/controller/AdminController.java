@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -197,7 +199,7 @@ public class AdminController {
 
     @RequestMapping(value = "/deleteService/{id}", method = RequestMethod.GET)
     String deleteService(@PathVariable("id") String id) {
-        if (placeDao.getByTypePeriod(serviceDao.getById(id)) != null) {
+        if (placeDao.getByTypePeriod(serviceDao.getById(id)).size() > 0) {
             View.setIsCreate(false);
             return "redirect:/admin";
         }
