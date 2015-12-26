@@ -34,7 +34,7 @@
         <where>
             <if test="city != null and city != ''">p.CITY = #{city}</if>
             <if test="street != null and street != ''">p.STREET = #{street}</if>
-            <if test="price != null">ROUND(p.PRICE, 0) = #{price}</if>
+            <if test="price != null">p.PRICE = #{price}</if>
             <if test="type != null and type != ''">p.SERVICE_TYPE = #{type}</if>
             <if test="period != null and period != ''">p.SERVICE_PERIOD = #{period}</if>
         </where>

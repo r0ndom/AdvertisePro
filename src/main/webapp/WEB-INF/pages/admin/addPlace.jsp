@@ -24,6 +24,8 @@
                 if (e.ctrlKey || e.altKey || e.metaKey) return;
                 var  chr = String.fromCharCode(e.keyCode);
                 if (chr == null) return;
+                var price = $("#price").val();
+                if (e.keyCode == 190 && !(price.indexOf(".") > -1) && price.length > 0) return true;
                 if (e.keyCode != 8 && chr < '0' || chr > '9') return false;
             });
         });
