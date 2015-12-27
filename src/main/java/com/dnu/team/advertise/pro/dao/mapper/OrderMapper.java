@@ -7,4 +7,5 @@ import java.util.List;
 public interface OrderMapper {
     void insert(Order order);
     List<Order> getByPlaceId(String id);
+    List<Order> getByUserId(String id);
 }

@@ -4,7 +4,6 @@ import com.dnu.team.advertise.pro.dao.OrderDao;
 import com.dnu.team.advertise.pro.dao.PlaceDao;
 import com.dnu.team.advertise.pro.dao.ServiceDao;
 import com.dnu.team.advertise.pro.dao.UserDao;
-import com.dnu.team.advertise.pro.model.Order;
 import com.dnu.team.advertise.pro.model.Place;
 import com.dnu.team.advertise.pro.model.Service;
 import com.dnu.team.advertise.pro.model.User;
@@ -211,6 +210,11 @@ public class AdminController {
 
     @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.GET)
     String deleteUser(@PathVariable("id") String id) {
+        if (orderDao.getByUserId(id) != null && orderDao.getByUserId(id).size() > 0) {
+            View.setIsCreate(false);
+            View.setPageIndex(0);
+            return "redirect:/admin";
+        }
         userDao.delete(id);
         View.setPageIndex(0);
         return "redirect:/admin";
@@ -230,7 +234,6 @@ public class AdminController {
 
     @RequestMapping(value = "/deletePlace/{id}", method = RequestMethod.GET)
     String deletePlace(@PathVariable("id") String id) {
-        List<Order> it = orderDao.getByPlaceId(id);
         if (orderDao.getByPlaceId(id) != null && orderDao.getByPlaceId(id).size() > 0) {
             View.setIsCreate(false);
             View.setPageIndex(2);

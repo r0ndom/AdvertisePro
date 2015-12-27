@@ -20,6 +20,10 @@
         select * from orders where orders.PLACE_ID = #{placeId};
     </select>
 
+    <select id="getByUserId" resultMap="getOrderResultMap">
+        select * from orders where orders.USER_ID = #{userId};
+    </select>
+
     <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Order" statementType="CALLABLE">
         insert into orders values (#{id}, #{description}, #{accountNumber}, #{status}, #{total}, #{userId}, #{placeId});
     </insert>

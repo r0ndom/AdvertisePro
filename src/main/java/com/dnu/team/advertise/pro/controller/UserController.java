@@ -30,6 +30,10 @@ public class UserController {
         if (View.getAdminUserData() == null) View.setAdminUserData(userDao.getUsers());
         mav.addObject("users", View.getAdminUserData());
         View.setAdminUserData(null);
+
+        mav.addObject("error", View.getIsCreate());
+        View.setIsCreate(true);
+
         return mav;
     }
 
