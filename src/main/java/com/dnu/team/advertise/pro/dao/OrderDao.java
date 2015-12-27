@@ -5,6 +5,8 @@ import com.dnu.team.advertise.pro.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class OrderDao {
     @Autowired
@@ -12,5 +14,9 @@ public class OrderDao {
 
     public void insert(Order order) {
         mapper.insert(order);
+    }
+
+    public List<Order> getByPlaceId(String id) {
+        return mapper.getByPlaceId(id);
     }
 }

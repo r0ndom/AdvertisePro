@@ -1,8 +1,10 @@
 package com.dnu.team.advertise.pro.controller;
 
+import com.dnu.team.advertise.pro.dao.OrderDao;
 import com.dnu.team.advertise.pro.dao.PlaceDao;
 import com.dnu.team.advertise.pro.dao.ServiceDao;
 import com.dnu.team.advertise.pro.dao.UserDao;
+import com.dnu.team.advertise.pro.model.Order;
 import com.dnu.team.advertise.pro.model.Place;
 import com.dnu.team.advertise.pro.model.Service;
 import com.dnu.team.advertise.pro.model.User;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -27,6 +31,9 @@ public class AdminController {
 
     @Autowired
     PlaceDao placeDao;
+
+    @Autowired
+    OrderDao orderDao;
 
     @Autowired
     UserService userService;
@@ -223,6 +230,12 @@ public class AdminController {
 
     @RequestMapping(value = "/deletePlace/{id}", method = RequestMethod.GET)
     String deletePlace(@PathVariable("id") String id) {
+        List<Order> it = orderDao.getByPlaceId(id);
+        if (orderDao.getByPlaceId(id) != null && orderDao.getByPlaceId(id).size() > 0) {
+            View.setIsCreate(false);
+            View.setPageIndex(2);
+            return "redirect:/admin";
+        }
         placeDao.delete(id);
         View.setPageIndex(2);
         return "redirect:/admin";

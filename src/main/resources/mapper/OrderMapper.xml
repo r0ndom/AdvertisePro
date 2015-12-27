@@ -16,6 +16,10 @@
 
     </resultMap>
 
+    <select id="getByPlaceId" resultMap="getOrderResultMap">
+        select * from orders where orders.PLACE_ID = #{placeId};
+    </select>
+
     <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Order" statementType="CALLABLE">
         insert into orders values (#{id}, #{description}, #{accountNumber}, #{status}, #{total}, #{userId}, #{placeId});
     </insert>

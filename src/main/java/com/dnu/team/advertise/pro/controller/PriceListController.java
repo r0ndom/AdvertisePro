@@ -30,6 +30,10 @@ public class PriceListController {
         if (View.getAdminPlaceData() == null) View.setAdminPlaceData(placeDao.getAll());
         mav.addObject("places", View.getAdminPlaceData());
         View.setAdminPlaceData(null);
+
+        mav.addObject("error", View.getIsCreate());
+        View.setIsCreate(true);
+
         return mav;
     }
 
