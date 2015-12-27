@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RangeController {
-    private static final String FILTER = "range/rangeFilter";
+    private static final String FILTER = "range/range";
     private static final String TABLE = "range/rangeTable";
 
     @Autowired
