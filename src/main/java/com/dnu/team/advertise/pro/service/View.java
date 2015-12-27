@@ -4,6 +4,7 @@ public class View {
     private static Object adminUserData;
     private static Object adminServiceData;
     private static Object adminPlaceData;
+    private static Object clientRangeData;
     private static boolean isCreate = true;
     private static int pageIndex = 0;
 
@@ -45,5 +46,13 @@ public class View {
 
     public static void setPageIndex(int pageIndex) {
         View.pageIndex = pageIndex;
+    }
+
+    public static Object getClientRangeData() {
+        return clientRangeData;
+    }
+
+    public static void setClientRangeData(Object clientRangeData) {
+        View.clientRangeData = clientRangeData;
     }
 }

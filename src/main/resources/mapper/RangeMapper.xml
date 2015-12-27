@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dnu.team.advertise.pro.dao.mapper.RangeMapper" >
+
+    <resultMap id="getRangeResultMap" type="com.dnu.team.advertise.pro.model.Range">
+
+        <result property="type" column="aTYPE"/>
+        <result property="period" column="PERIOD"/>
+        <result property="servicePrice" column="PRICE"/>
+        <result property="city" column="CITY"/>
+        <result property="street" column="STREET"/>
+        <result property="placePrice" column="PLACE_PRICE"/>
+        <result property="total" column="TOTAL"/>
+
+    </resultMap>
+
+    <select id="get" resultMap="getRangeResultMap">
+        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL from services s, places p where s.aTYPE = p.SERVICE_TYPE AND s.PERIOD = p.SERVICE_PERIOD;
+    </select>
+
+    <select id="search" resultMap="getRangeResultMap" parameterType="com.dnu.team.advertise.pro.model.filter.RangeSearchFilter">
+        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL from services s, places p
+        <where>
+            <if test="type != null and type != ''">s.aTYPE = #{type}</if>
+            <if test="period != null and period != ''">AND s.PERIOD = #{period}</if>
+            <if test="servicePrice != null">AND s.PRICE = #{servicePrice}</if>
+            <if test="city != null and city != ''">AND p.CITY = #{city}</if>
+            <if test="street != null and street != ''">AND p.STREET = #{street}</if>
+            <if test="placePrice != null">AND p.PRICE = #{placePrice}</if>
+            <if test="total != null">AND s.PRICE + p.PRICE = #{total}</if>
+        </where>
+    </select>
+
+</mapper>
