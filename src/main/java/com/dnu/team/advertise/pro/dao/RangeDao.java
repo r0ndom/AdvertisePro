@@ -20,4 +20,8 @@ public class RangeDao {
     public List<Range> search(RangeSearchFilter rangeSearchFilter) {
         return mapper.search(rangeSearchFilter);
     }
+
+    public Range getById(String id) {
+        return mapper.getById(id);
+    }
 }

@@ -3,6 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<script>
+    $("#submitButton").on('click', function() {
+        alert('Услуга добавлена в корзину!');
+    });
+</script>
+
 <table class="table">
     <thead>
     <tr>
@@ -27,7 +33,7 @@
             <td>${r.placePrice}</td>
             <td>${r.total}</td>
             <td>
-                <button type="submit" class="btn btn-lg btn-success">Заказать</button>
+                <a href="<c:url value="/client/order/${r.id}"/>"><button type="submit" class="btn btn-lg btn-success" id="submitButton">Заказать</button></a>
             </td>
         </tr>
     </c:forEach>

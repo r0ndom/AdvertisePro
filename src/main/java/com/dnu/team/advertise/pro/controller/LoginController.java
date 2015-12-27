@@ -1,5 +1,6 @@
 package com.dnu.team.advertise.pro.controller;
 
+import com.dnu.team.advertise.pro.service.View;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
     private static final String LOGIN = "login/login";
-
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome() {
@@ -24,7 +24,6 @@ public class LoginController {
             model.addObject("error", "Неверный логин и пароль");
         }
         model.setViewName(LOGIN);
-
         return model;
 
     }

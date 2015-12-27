@@ -8,4 +8,5 @@ import java.util.List;
 public interface RangeMapper {
     List<Range> get();
     List<Range> search(RangeSearchFilter rangeSearchFilter);
+    Range getById(String id);
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dnu.team.advertise.pro.dao.mapper.OrderMapper" >
+
+    <resultMap id="getOrderResultMap" type="com.dnu.team.advertise.pro.model.Order">
+
+        <id property="id" column="ID"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="accountNumber" column="ACCOUNT_NUMBER"/>
+        <result property="status" column="ORDER_STATUS"/>
+        <result property="total" column="PRICE"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="placeId" column="PLACE_ID"/>
+
+    </resultMap>
+
+    <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Order" statementType="CALLABLE">
+        insert into orders values (#{id}, #{description}, #{accountNumber}, #{status}, #{total}, #{userId}, #{placeId});
+    </insert>
+
+</mapper>

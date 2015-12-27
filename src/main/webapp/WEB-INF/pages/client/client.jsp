@@ -30,7 +30,7 @@
 
         <ul class="nav navbar-right top-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${clientLogin} <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${clientLogin}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a
