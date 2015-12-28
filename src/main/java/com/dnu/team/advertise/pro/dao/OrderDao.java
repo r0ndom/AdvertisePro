@@ -23,4 +23,8 @@ public class OrderDao {
     public List<Order> getByUserId(String id) {
         return mapper.getByUserId(id);
     }
+
+    public Order getById(String id) {
+        return mapper.getById(id);
+    }
 }

@@ -1,5 +1,7 @@
 package com.dnu.team.advertise.pro.controller;
 
+import com.dnu.team.advertise.pro.dao.OrderDao;
+import com.dnu.team.advertise.pro.dao.PlaceDao;
 import com.dnu.team.advertise.pro.dao.RangeDao;
 import com.dnu.team.advertise.pro.model.Order;
 import com.dnu.team.advertise.pro.service.OrderService;
@@ -19,6 +21,7 @@ public class ClientController {
     private static final String CLIENT = "client/client";
     private static final String INFO = "client/info";
     private static final String MAKE_ORDER = "client/makeOrder";
+    private static final String ORDER_INFO = "client/orderInfo";
 
     @Autowired
     UserService userService;
@@ -28,6 +31,12 @@ public class ClientController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    OrderDao orderDao;
+
+    @Autowired
+    PlaceDao placeDao;
 
     @RequestMapping(method = RequestMethod.GET)
     ModelAndView show() {
@@ -42,6 +51,7 @@ public class ClientController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName(INFO);
         mav.addObject("client", userService.getCurrentUser());
+        mav.addObject("orders", orderDao.getByUserId(userService.getCurrentUser().getId()));
         return mav;
     }
 
@@ -59,5 +69,21 @@ public class ClientController {
     String makeOrder(@ModelAttribute("order") Order order, @PathVariable("id") String id) {
         orderService.insert(order, id, "Processed");
         return "redirect:/client/info";
+    }
+
+    @RequestMapping(value = "/info/orderInfo/{id}", method = RequestMethod.GET)
+    ModelAndView showInfoAboutOrder(@PathVariable("id") String id) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(ORDER_INFO);
+        mav.addObject("client", userService.getCurrentUser());
+        mav.addObject("order", orderDao.getById(id));
+        mav.addObject("place", placeDao.getById(orderDao.getById(id).getPlaceId()));
+        return mav;
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    String deleteOrder(@PathVariable("id") String id) {
+
+        return "redirect:/client";
     }
 }

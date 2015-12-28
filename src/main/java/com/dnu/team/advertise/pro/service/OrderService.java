@@ -28,5 +28,4 @@ public class OrderService {
         order.setTotal(rangeDao.getById(id).getTotal());
         orderDao.insert(order);
     }
-
 }

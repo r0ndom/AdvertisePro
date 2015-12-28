@@ -8,4 +8,5 @@ public interface OrderMapper {
     void insert(Order order);
     List<Order> getByPlaceId(String id);
     List<Order> getByUserId(String id);
+    Order getById(String id);
 }
