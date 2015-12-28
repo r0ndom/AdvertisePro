@@ -11,6 +11,7 @@
         <result property="accountNumber" column="ACCOUNT_NUMBER"/>
         <result property="status" column="ORDER_STATUS"/>
         <result property="total" column="PRICE"/>
+        <result property="date" column="aDATE" jdbcType="DATE" javaType="java.sql.Date"/>
         <result property="userId" column="USER_ID"/>
         <result property="placeId" column="PLACE_ID"/>
 
@@ -33,7 +34,7 @@
     </select>
 
     <insert id="insert" >
-        insert into orders values (#{id}, #{description}, #{accountNumber}, #{status}, #{total}, #{userId}, #{placeId});
+        insert into orders values (#{id}, #{description}, #{accountNumber}, #{status}, #{total}, #{date}, #{userId}, #{placeId});
     </insert>
 
     <update id="updateStatus" parameterType="com.dnu.team.advertise.pro.model.Order" statementType="CALLABLE">

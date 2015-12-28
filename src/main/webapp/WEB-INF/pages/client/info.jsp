@@ -84,6 +84,7 @@
                     <th>Описание</th>
                     <th>Номер счёта</th>
                     <th>Статус заказа</th>
+                    <th>Дата</th>
                     <th>Цена</th>
                     <th></th>
                 </tr>
@@ -104,6 +105,7 @@
                                 <span class="label label-success"><c:out value="Завершен"/></span>
                             </c:if>
                         </td>
+                        <td>${order.date}</td>
                         <td>${order.total}</td>
                         <td>
                             <c:if test="${order.status == 'Processed'}">

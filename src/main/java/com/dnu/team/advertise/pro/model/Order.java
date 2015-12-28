@@ -1,5 +1,7 @@
 package com.dnu.team.advertise.pro.model;
 
+import java.sql.Date;
+
 public class Order {
     String id;
     String userId;
@@ -8,12 +10,13 @@ public class Order {
     Double total;
     String description;
     String accountNumber;
+    Date date;
 
     public Order() {
 
     }
 
-    public Order(String id, String userId, String placeId, String status, Double total, String description, String accountNumber) {
+    public Order(String id, String userId, String placeId, String status, Double total, String description, String accountNumber, Date date) {
         this.id = id;
         this.userId = userId;
         this.placeId = placeId;
@@ -21,6 +24,7 @@ public class Order {
         this.total = total;
         this.description = description;
         this.accountNumber = accountNumber;
+        this.date = date;
     }
 
     public String getId() {
@@ -77,5 +81,13 @@ public class Order {
 
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

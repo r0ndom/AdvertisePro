@@ -60,9 +60,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4 form-group">
+                        <div class="col-sm-6 form-group">
                             <label>Номер счёта</label>
                                 ${order.accountNumber}
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Дата</label>
+                                ${order.date}
                         </div>
                     </div>
                     <div class="row">
