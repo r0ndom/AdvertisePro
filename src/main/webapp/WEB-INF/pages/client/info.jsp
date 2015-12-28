@@ -107,7 +107,7 @@
                         <td>${order.total}</td>
                         <td>
                             <c:if test="${order.status == 'Processed'}">
-                                <a href="#"><button type="submit" class="btn btn-lg btn-danger" id="submitButton">Отменить</button></a>
+                                <a href="/client/delete/${order.id}"><button type="submit" class="btn btn-lg btn-danger" id="submitButton">Отменить</button></a>
                             </c:if>
                         </td>
                     </tr>

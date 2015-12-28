@@ -83,7 +83,7 @@ public class ClientController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     String deleteOrder(@PathVariable("id") String id) {
-
-        return "redirect:/client";
+        orderDao.delete(id);
+        return "redirect:/client/info";
     }
 }

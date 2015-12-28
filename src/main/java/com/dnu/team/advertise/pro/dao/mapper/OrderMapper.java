@@ -9,4 +9,5 @@ public interface OrderMapper {
     List<Order> getByPlaceId(String id);
     List<Order> getByUserId(String id);
     Order getById(String id);
+    void delete(String id);
 }

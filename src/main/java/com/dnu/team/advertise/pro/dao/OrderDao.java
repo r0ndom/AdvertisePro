@@ -27,4 +27,8 @@ public class OrderDao {
     public Order getById(String id) {
         return mapper.getById(id);
     }
+
+    public void delete(String id) {
+        mapper.delete(id);
+    }
 }

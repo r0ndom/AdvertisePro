@@ -28,8 +28,12 @@
         select * from orders where orders.ID = #{id};
     </select>
 
-    <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Order" statementType="CALLABLE">
+    <insert id="insert" >
         insert into orders values (#{id}, #{description}, #{accountNumber}, #{status}, #{total}, #{userId}, #{placeId});
     </insert>
+
+    <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.Order" statementType="CALLABLE">
+        delete from orders where orders.ID = #{id};
+    </delete>
 
 </mapper>
