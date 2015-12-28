@@ -47,4 +47,53 @@
 
     </nav>
 
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <h1>Необработанных заказов ${ordersCount}</h1>
+
+            <c:if test="${orders.size() > 0}">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Описание</th>
+                        <th>Номер счёта</th>
+                        <th>Статус заказа</th>
+                        <th>Цена</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${orders}" var="order">
+                        <tr>
+                            <td><a href="/agent/orderInfo/${order.id}">${order.description}</a></td>
+                            <td>${order.accountNumber}</td>
+                            <td>
+                                <c:if test="${order.status == 'Processed'}">
+                                    <span class="label label-warning"><c:out value="Обрабатывается"/></span>
+                                </c:if>
+                                <c:if test="${order.status == 'Rejected'}">
+                                    <span class="label label-danger"><c:out value="Отменен"/></span>
+                                </c:if>
+                                <c:if test="${order.status == 'Done'}">
+                                    <span class="label label-success"><c:out value="Завершен"/></span>
+                                </c:if>
+                            </td>
+                            <td>${order.total}</td>
+                            <td>
+                                <c:if test="${order.status == 'Processed'}">
+                                    <a href="/agent/delete/${order.id}"><button type="submit" class="btn btn-lg btn-danger" id="submitButton">Отменить</button></a>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
+
+        </div>
+
+    </div>
+
 </div>

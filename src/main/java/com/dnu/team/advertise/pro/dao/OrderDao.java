@@ -31,4 +31,8 @@ public class OrderDao {
     public void delete(String id) {
         mapper.delete(id);
     }
+
+    public List<Order> getAllByStatus(String id) {
+        return mapper.getAllByStatus(id);
+    }
 }

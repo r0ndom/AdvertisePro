@@ -28,6 +28,10 @@
         select * from orders where orders.ID = #{id};
     </select>
 
+    <select id="getAllByStatus" resultMap="getOrderResultMap">
+        select * from orders where orders.ORDER_STATUS = #{status};
+    </select>
+
     <insert id="insert" >
         insert into orders values (#{id}, #{description}, #{accountNumber}, #{status}, #{total}, #{userId}, #{placeId});
     </insert>
