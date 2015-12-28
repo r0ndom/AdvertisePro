@@ -82,9 +82,18 @@
                             </td>
                             <td>${order.total}</td>
                             <td>
-                                <c:if test="${order.status == 'Processed'}">
-                                    <a href="/agent/delete/${order.id}"><button type="submit" class="btn btn-lg btn-danger" id="submitButton">Отменить</button></a>
-                                </c:if>
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Действие
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <a href="/agent/submit/${order.id}"><button type="submit" class="btn btn-lg btn-success" id="submitButton">Выполнить</button></a>
+                                        <c:if test="${order.status == 'Processed'}">
+                                            <a href="/agent/delete/${order.id}"><button type="submit" class="btn btn-lg btn-danger" id="rejectButton">Отменить</button></a>
+                                        </c:if>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     </c:forEach>
