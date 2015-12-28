@@ -51,7 +51,7 @@
 
         <div class="container-fluid">
 
-            <h1>Необработанных заказов ${ordersCount}</h1>
+            <h1>Необработанных заказов - ${ordersCount}</h1>
 
             <c:if test="${orders.size() > 0}">
                 <table class="table">

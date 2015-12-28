@@ -1,10 +1,13 @@
 package com.dnu.team.advertise.pro.controller;
 
 import com.dnu.team.advertise.pro.dao.OrderDao;
+import com.dnu.team.advertise.pro.dao.PlaceDao;
+import com.dnu.team.advertise.pro.dao.UserDao;
 import com.dnu.team.advertise.pro.model.Order;
 import com.dnu.team.advertise.pro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +24,15 @@ public class AgentController {
     @Autowired
     OrderDao orderDao;
 
+    @Autowired
+    PlaceDao placeDao;
+
+    @Autowired
+    UserDao userDao;
+
     private static final String AGENT = "agent/agent";
     private static final String INFO = "agent/info";
+    private static final String ORDER_INFO = "agent/orderInfo";
 
     @RequestMapping(method = RequestMethod.GET)
     ModelAndView show() {
@@ -32,6 +42,16 @@ public class AgentController {
         List<Order> orders = orderDao.getAllByStatus("Processed");
         mav.addObject("ordersCount", orders.size());
         mav.addObject("orders", orders);
+        return mav;
+    }
+
+    @RequestMapping(value = "/orderInfo/{id}", method = RequestMethod.GET)
+    ModelAndView showInfoAboutOrder(@PathVariable("id") String id) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(ORDER_INFO);
+        mav.addObject("client", userDao.get(orderDao.getById(id).getUserId()));
+        mav.addObject("order", orderDao.getById(id));
+        mav.addObject("place", placeDao.getById(orderDao.getById(id).getPlaceId()));
         return mav;
     }
 
