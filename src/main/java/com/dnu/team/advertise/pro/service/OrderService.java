@@ -28,4 +28,9 @@ public class OrderService {
         order.setTotal(rangeDao.getById(id).getTotal());
         orderDao.insert(order);
     }
+
+    public void updateStatus(Order order, String status) {
+        order.setStatus(status);
+        orderDao.updateStatus(order);
+    }
 }

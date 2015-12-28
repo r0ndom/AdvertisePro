@@ -35,4 +35,8 @@ public class OrderDao {
     public List<Order> getAllByStatus(String id) {
         return mapper.getAllByStatus(id);
     }
+
+    public void updateStatus(Order order) {
+        mapper.updateStatus(order);
+    }
 }

@@ -90,7 +90,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <a href="/agent/submit/${order.id}"><button type="submit" class="btn btn-lg btn-success" id="submitButton">Выполнить</button></a>
                                         <c:if test="${order.status == 'Processed'}">
-                                            <a href="/agent/delete/${order.id}"><button type="submit" class="btn btn-lg btn-danger" id="rejectButton">Отменить</button></a>
+                                            <a href="/agent/rejected/${order.id}"><button type="submit" class="btn btn-lg btn-danger" id="rejectButton">Отменить</button></a>
                                         </c:if>
                                     </ul>
                                 </div>

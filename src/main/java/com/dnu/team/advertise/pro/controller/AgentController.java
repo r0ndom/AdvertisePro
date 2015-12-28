@@ -4,6 +4,7 @@ import com.dnu.team.advertise.pro.dao.OrderDao;
 import com.dnu.team.advertise.pro.dao.PlaceDao;
 import com.dnu.team.advertise.pro.dao.UserDao;
 import com.dnu.team.advertise.pro.model.Order;
+import com.dnu.team.advertise.pro.service.OrderService;
 import com.dnu.team.advertise.pro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,9 @@ public class AgentController {
 
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    OrderService orderService;
 
     private static final String AGENT = "agent/agent";
     private static final String INFO = "agent/info";
@@ -61,5 +65,17 @@ public class AgentController {
         mav.setViewName(INFO);
         mav.addObject("agent", userService.getCurrentUser());
         return mav;
+    }
+
+    @RequestMapping(value = "/submit/{id}", method = RequestMethod.GET)
+    String submitOrder(@PathVariable("id") String id) {
+        orderService.updateStatus(orderDao.getById(id), "Done");
+        return "redirect:/agent";
+    }
+
+    @RequestMapping(value = "/rejected/{id}", method = RequestMethod.GET)
+    String rejectedOrder(@PathVariable("id") String id) {
+        orderService.updateStatus(orderDao.getById(id), "Rejected");
+        return "redirect:/agent";
     }
 }

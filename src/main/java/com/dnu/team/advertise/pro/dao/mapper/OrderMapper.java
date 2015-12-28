@@ -11,4 +11,5 @@ public interface OrderMapper {
     Order getById(String id);
     void delete(String id);
     List<Order> getAllByStatus(String id);
+    void updateStatus(Order order);
 }
