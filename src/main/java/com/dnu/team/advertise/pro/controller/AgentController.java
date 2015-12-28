@@ -78,4 +78,5 @@ public class AgentController {
         orderService.updateStatus(orderDao.getById(id), "Rejected");
         return "redirect:/agent";
     }
+
 }
