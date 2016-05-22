@@ -143,7 +143,7 @@
 <table class="table">
     <thead>
     <tr>
-        <th></th>
+        <th class="hidden"></th>
         <th>Тип услуги</th>
         <th>Период услуги</th>
         <th>Цена услуги</th>
