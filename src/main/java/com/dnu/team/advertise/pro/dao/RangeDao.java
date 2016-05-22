@@ -24,4 +24,8 @@ public class RangeDao {
     public Range getById(String id) {
         return mapper.getById(id);
     }
+
+    public void updateMark(String id, Double mark) {
+        mapper.updateMark(id, mark);
+    }
 }

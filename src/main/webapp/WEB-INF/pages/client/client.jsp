@@ -6,6 +6,7 @@
 <html>
 
 <head>
+
     <title>Клиент</title>
 
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">

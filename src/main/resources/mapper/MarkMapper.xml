@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dnu.team.advertise.pro.dao.mapper.MarkMapper">
+
+    <resultMap id="getMarkResultMap" type="com.dnu.team.advertise.pro.model.Mark">
+        <result property="userId" column="USER_ID"/>
+        <result property="placeId" column="PLACE_ID"/>
+        <result property="mark" column="MARK"/>
+    </resultMap>
+
+    <select id="checkIfCurrentRecordAlreadyExists" parameterType="map" resultType="java.lang.Integer">
+        select exists (select * from marks as m where m.USER_ID = #{userId} and m.PLACE_ID = #{placeId});
+    </select>
+    
+    <select id="getCountOfNotZeroMarks" parameterType="map" resultType="java.lang.Integer">
+        select count(*) from marks as m where m.PLACE_ID = #{placeId} and m.MARK != 0;
+    </select>
+
+    <select id="getSumOfMarks" parameterType="map" resultType="java.lang.Integer">
+        select sum(m.MARK) from marks as m where m.PLACE_ID = #{placeId};
+    </select>
+
+    <insert id="insert" parameterType="map">
+        insert into marks values (#{userId}, #{placeId}, #{mark});
+    </insert>
+
+    <update id="update" parameterType="map">
+        update marks as m set m.MARK = #{mark} where m.USER_ID = #{userId} and m.PLACE_ID = #{placeId};
+    </update>
+
+</mapper>

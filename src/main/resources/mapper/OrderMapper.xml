@@ -33,7 +33,7 @@
         select * from orders where orders.ORDER_STATUS = #{status};
     </select>
 
-    <insert id="insert" >
+    <insert id="insert">
         insert into orders values (#{id}, #{description}, #{accountNumber}, #{status}, #{total}, #{date}, #{userId}, #{placeId});
     </insert>
 
@@ -44,6 +44,5 @@
     <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.Order" statementType="CALLABLE">
         delete from orders where orders.ID = #{id};
     </delete>
-
 
 </mapper>

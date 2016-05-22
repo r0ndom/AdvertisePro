@@ -8,6 +8,7 @@
     <title>Информация о клиенте</title>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/registration.css">
+    <link href="<c:url value="/resources/css/rating.css"/>" rel="stylesheet">
 
     <div class="container">
         <h1 class="well">Информация о клиенте</h1>

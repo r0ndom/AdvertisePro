@@ -4,14 +4,12 @@ import com.dnu.team.advertise.pro.dao.OrderDao;
 import com.dnu.team.advertise.pro.dao.PlaceDao;
 import com.dnu.team.advertise.pro.dao.RangeDao;
 import com.dnu.team.advertise.pro.model.Order;
+import com.dnu.team.advertise.pro.service.MarkService;
 import com.dnu.team.advertise.pro.service.OrderService;
 import com.dnu.team.advertise.pro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -86,4 +84,5 @@ public class ClientController {
         orderDao.delete(id);
         return "redirect:/client/info";
     }
+
 }

@@ -14,15 +14,16 @@
         <result property="placePrice" column="PLACE_PRICE"/>
         <result property="total" column="TOTAL"/>
         <result property="id" column="ID"/>
+        <result property="mark" column="MARK"/>
 
     </resultMap>
 
     <select id="get" resultMap="getRangeResultMap">
-        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL, p.ID ID from services s inner join places p on s.aTYPE = p.SERVICE_TYPE AND s.PERIOD = p.SERVICE_PERIOD;
+        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL, p.ID ID, p.MARK from services s inner join places p on s.aTYPE = p.SERVICE_TYPE AND s.PERIOD = p.SERVICE_PERIOD;
     </select>
 
     <select id="search" resultMap="getRangeResultMap" parameterType="com.dnu.team.advertise.pro.model.filter.RangeSearchFilter">
-        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL, p.ID ID from services s, places p
+        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL, p.ID ID, p.MARK from services s, places p
         <where>
             s.aTYPE = p.SERVICE_TYPE AND s.PERIOD = p.SERVICE_PERIOD
             <if test="type != null and type != ''">AND s.aTYPE = #{type}</if>
@@ -36,8 +37,12 @@
     </select>
 
     <select id="getById" resultMap="getRangeResultMap">
-        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL, p.ID ID from services s, places p
+        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL, p.ID ID, p.MARK from services s, places p
         where s.aTYPE = p.SERVICE_TYPE and s.PERIOD = p.SERVICE_PERIOD and p.ID = #{id};
     </select>
+
+    <update id="updateMark" parameterType="map">
+        update places as p set p.mark=#{mark} where p.id=#{id};
+    </update>
 
 </mapper>

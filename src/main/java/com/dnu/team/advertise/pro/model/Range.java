@@ -9,12 +9,13 @@ public class Range {
     Double placePrice;
     Double total;
     String id;
+    Double mark;
 
     public Range() {
 
     }
 
-    public Range(String type, String period, Double servicePrice, String city, String street, Double placePrice, Double total, String id) {
+    public Range(String type, String period, Double servicePrice, String city, String street, Double placePrice, Double total, String id, Double mark) {
         this.type = type;
         this.period = period;
         this.servicePrice = servicePrice;
@@ -23,6 +24,7 @@ public class Range {
         this.placePrice = placePrice;
         this.total = total;
         this.id = id;
+        this.mark = mark;
     }
 
     public String getType() {
@@ -87,5 +89,13 @@ public class Range {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Double getMark() {
+        return mark;
+    }
+
+    public void setMark(Double mark) {
+        this.mark = mark;
     }
 }
