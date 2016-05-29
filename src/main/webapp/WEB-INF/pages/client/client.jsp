@@ -60,6 +60,10 @@
                 <jsp:include page="/rangeTable"/>
             </div>
 
+            <div id="recommendation">
+                <jsp:include page="/recommendation"/>
+            </div>
+
         </div>
 
     </div>

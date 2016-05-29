@@ -22,6 +22,10 @@
         select sum(m.MARK) from marks as m where m.PLACE_ID = #{placeId};
     </select>
 
+    <select id="getAllMarks" resultMap="getMarkResultMap">
+        select * from marks;
+    </select>
+
     <insert id="insert" parameterType="map">
         insert into marks values (#{userId}, #{placeId}, #{mark});
     </insert>

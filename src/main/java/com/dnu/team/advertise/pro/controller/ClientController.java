@@ -1,16 +1,22 @@
 package com.dnu.team.advertise.pro.controller;
 
+import com.dnu.team.advertise.pro.dao.MarkDao;
 import com.dnu.team.advertise.pro.dao.OrderDao;
 import com.dnu.team.advertise.pro.dao.PlaceDao;
 import com.dnu.team.advertise.pro.dao.RangeDao;
+import com.dnu.team.advertise.pro.model.Mark;
 import com.dnu.team.advertise.pro.model.Order;
 import com.dnu.team.advertise.pro.service.MarkService;
 import com.dnu.team.advertise.pro.service.OrderService;
+import com.dnu.team.advertise.pro.service.SlopeOne;
 import com.dnu.team.advertise.pro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/client")
@@ -36,11 +42,18 @@ public class ClientController {
     @Autowired
     PlaceDao placeDao;
 
+    @Autowired
+    MarkDao markDao;
+
+    @Autowired
+    SlopeOne slopeOne;
+
     @RequestMapping(method = RequestMethod.GET)
     ModelAndView show() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName(CLIENT);
         mav.addObject("clientLogin", userService.getCurrentUser().getCredentials().getLogin());
+        slopeOne.setData(markDao.getAllMarks());
         return mav;
     }
 

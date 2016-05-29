@@ -1,6 +1,9 @@
 package com.dnu.team.advertise.pro.dao.mapper;
 
+import com.dnu.team.advertise.pro.model.Mark;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface MarkMapper {
     void insert(@Param("userId") String userId,
@@ -14,4 +17,5 @@ public interface MarkMapper {
                                               @Param("mark") Integer mark);
     int getCountOfNotZeroMarks(@Param("placeId") String placeId);
     int getSumOfMarks(@Param("placeId") String placeId);
+    List<Mark> getAllMarks();
 }

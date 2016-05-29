@@ -1,8 +1,11 @@
 package com.dnu.team.advertise.pro.dao;
 
 import com.dnu.team.advertise.pro.dao.mapper.MarkMapper;
+import com.dnu.team.advertise.pro.model.Mark;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class MarkDao {
@@ -28,6 +31,10 @@ public class MarkDao {
 
     public Integer getSumOfMarks(String placeId) {
         return markMapper.getSumOfMarks(placeId);
+    }
+
+    public List<Mark> getAllMarks() {
+        return markMapper.getAllMarks();
     }
 
 }
