@@ -13,4 +13,5 @@ public interface UserMapper {
     User findByLogin(String login);
     List<User> getAllUsers();
     List<User> search(UserSearchFilter userSearchFilter);
+    List<User> getAllClients();
 }

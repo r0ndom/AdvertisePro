@@ -41,7 +41,7 @@
     </select>
 
     <insert id="insert" parameterType="com.dnu.team.advertise.pro.model.Place" statementType="CALLABLE">
-        insert into places values (#{id}, #{city}, #{street}, #{price}, #{serviceType}, #{servicePeriod});
+        insert into places (ID, CITY, STREET, PRICE, SERVICE_TYPE, SERVICE_PERIOD, MARK) values (#{id}, #{city}, #{street}, #{price}, #{serviceType}, #{servicePeriod}, 0);
     </insert>
 
     <update id="update" parameterType="com.dnu.team.advertise.pro.model.Place" statementType="CALLABLE">

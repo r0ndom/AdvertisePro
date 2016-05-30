@@ -45,4 +45,8 @@ public class UserDao {
     public List<User> search(UserSearchFilter userSearchFilter) {
         return mapper.search(userSearchFilter);
     }
+
+    public List<User> getAllClients() {
+        return mapper.getAllClients();
+    }
 }

@@ -2,6 +2,7 @@ package com.dnu.team.advertise.pro.controller;
 
 import com.dnu.team.advertise.pro.dao.RangeDao;
 import com.dnu.team.advertise.pro.model.Range;
+import com.dnu.team.advertise.pro.service.ItemToItem;
 import com.dnu.team.advertise.pro.service.MarkService;
 import com.dnu.team.advertise.pro.service.SlopeOne;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class MarkController {
     @Autowired
     MarkService markService;
 
+    @Autowired
+    ItemToItem itemToItem;
+
     private final static String MARKS = "marks/mark";
 
     @RequestMapping(value = "/mark", method = RequestMethod.POST)
@@ -35,7 +39,11 @@ public class MarkController {
     ModelAndView getPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(MARKS);
-        modelAndView.addObject("marks", markService.getRecommendedOrders());
+        if (markService.getRecommendedOrders().size() == 0) {
+            modelAndView.addObject("marks", itemToItem.predict());
+        } else {
+            modelAndView.addObject("marks", markService.getRecommendedOrders());
+        }
         return modelAndView;
     }
 

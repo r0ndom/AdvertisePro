@@ -139,6 +139,10 @@
         WHERE credentials.LOGIN = #{login}
     </select>
 
+    <select id="getAllClients" resultMap="getUserResultMap">
+        select * from users where role='ROLE_CLIENT';
+    </select>
+
     <insert id="create" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
         {call CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
         #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})}
