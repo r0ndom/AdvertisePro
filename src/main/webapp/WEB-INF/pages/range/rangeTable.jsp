@@ -17,10 +17,6 @@
 
         $('.hidden').hide();
 
-        $("#submitButton").on('click', function() {
-            alert('Услуга добавлена в корзину!');
-        });
-
         (function ($) {
 
             var RatingBar = function( element, options ) {
