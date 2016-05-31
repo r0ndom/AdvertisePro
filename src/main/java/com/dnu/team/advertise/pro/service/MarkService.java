@@ -25,7 +25,7 @@ public class MarkService {
     @Autowired
     SlopeOne slopeOne;
 
-    private HashMap<String, Float> predict = new HashMap<>();
+    private static HashMap<String, Float> predict = new HashMap<>();
 
     public void setMark(String placeId, Integer mark) {
         String userId = userService.getCurrentUser().getId();
