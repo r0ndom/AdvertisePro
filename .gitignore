@@ -7,4 +7,8 @@ git add .
 /build/
 .gradle/
 /db.properties
+classes/
+gradle/
+gradlew
+gradlew.bat
 
