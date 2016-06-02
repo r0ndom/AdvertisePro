@@ -144,17 +144,17 @@
     </select>
 
     <insert id="create" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
-        {call CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
+        {select CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
         #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})}
     </insert>
 
     <update id="update" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
-        {call UPDATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{contacts.city}, #{contacts.postCode},
+        {select UPDATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{contacts.city}, #{contacts.postCode},
         #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.password})}
     </update>
 
     <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
-        {call DELETE_USER(#{id})}
+        {select DELETE_USER(#{id})}
     </delete>
 
 </mapper>
