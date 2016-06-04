@@ -19,7 +19,7 @@
     </resultMap>
 
     <select id="get" resultMap="getRangeResultMap">
-        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL, p.ID ID, p.MARK from services s inner join places p on s.aTYPE = p.SERVICE_TYPE AND s.PERIOD = p.SERVICE_PERIOD;
+        select s.aTYPE, s.PERIOD, s.PRICE, p.CITY, p.STREET, p.PRICE PLACE_PRICE, s.PRICE + p.PRICE TOTAL, p.ID ID, p.MARK from services s inner join places p on s.aTYPE = p.SERVICE_TYPE AND s.PERIOD = p.SERVICE_PERIOD ORDER BY p.CITY, p.MARK;
     </select>
 
     <select id="search" resultMap="getRangeResultMap" parameterType="com.dnu.team.advertise.pro.model.filter.RangeSearchFilter">

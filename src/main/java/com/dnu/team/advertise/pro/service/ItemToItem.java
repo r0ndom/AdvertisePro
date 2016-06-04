@@ -1,12 +1,10 @@
 package com.dnu.team.advertise.pro.service;
 
+import com.dnu.team.advertise.pro.dao.OrderDao;
 import com.dnu.team.advertise.pro.dao.PlaceDao;
 import com.dnu.team.advertise.pro.dao.RangeDao;
 import com.dnu.team.advertise.pro.dao.UserDao;
-import com.dnu.team.advertise.pro.model.Mark;
-import com.dnu.team.advertise.pro.model.Place;
-import com.dnu.team.advertise.pro.model.Range;
-import com.dnu.team.advertise.pro.model.User;
+import com.dnu.team.advertise.pro.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,26 +22,21 @@ public class ItemToItem {
     @Autowired
     RangeDao rangeDao;
 
-    private Map<String, Map<String, Float>> data;
+    private Map<String, Set<String>> data;
     private List<List<Boolean>> vectors;
     private List<Place> places;
 
-    public void setData(List<Mark> marks) {
+    public void setData(List<Order> orders) {
         data = new HashMap<>();
 
-        List<String> places = new ArrayList<>();
-        List<Map<String, Float>> usersMarks = new ArrayList<>();
+        for (Order order : orders) {
+            String placeId = order.getPlaceId();
+            String userId = order.getUserId();
 
-        for (Mark mark : marks) {
-            if (!places.contains(mark.getPlaceId())) {
-                places.add(mark.getPlaceId());
-                usersMarks.add(new HashMap<String, Float>());
+            if (!data.containsKey(placeId)) {
+                data.put(placeId, new HashSet<String>());
             }
-            usersMarks.get(places.indexOf(mark.getPlaceId())).put(mark.getUserId(), (float) mark.getMark());
-        }
-
-        for (int i = 0; i < places.size(); i++) {
-            data.put(places.get(i), usersMarks.get(i));
+            data.get(placeId).add(userId);
         }
 
         seCollections();
@@ -59,7 +52,7 @@ public class ItemToItem {
             vectors.add(new ArrayList<Boolean>());
             if (data.get(place.getId()) != null) {
                 for (User user : users) {
-                    if (data.get(place.getId()).containsKey(user.getId())) {
+                    if (data.get(place.getId()).contains(user.getId())) {
                         vectors.get(vectors.size() - 1).add(true);
                     } else {
                         vectors.get(vectors.size() - 1).add(false);
@@ -97,6 +90,7 @@ public class ItemToItem {
                 }
             }
         }
+
         return  recommendationList;
     }
 

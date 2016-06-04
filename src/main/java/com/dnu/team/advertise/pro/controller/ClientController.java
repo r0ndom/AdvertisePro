@@ -54,7 +54,7 @@ public class ClientController {
         mav.setViewName(CLIENT);
         mav.addObject("clientLogin", userService.getCurrentUser().getCredentials().getLogin());
         slopeOne.setData(markDao.getAllMarks());
-        itemToItem.setData(markDao.getAllMarks());
+        itemToItem.setData(orderDao.getAllByStatus("Done"));
         return mav;
     }
 
