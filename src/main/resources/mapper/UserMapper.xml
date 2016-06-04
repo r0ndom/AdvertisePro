@@ -143,18 +143,18 @@
         select * from users where role='ROLE_CLIENT';
     </select>
 
-    <insert id="create" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
-        {select CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
-        #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})}
+    <insert id="create" parameterType="com.dnu.team.advertise.pro.model.User">
+        select CREATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{role}, #{contacts.id}, #{contacts.city}, #{contacts.postCode},
+        #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.login}, #{credentials.password})
     </insert>
 
-    <update id="update" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
-        {select UPDATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{contacts.city}, #{contacts.postCode},
-        #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.password})}
+    <update id="update" parameterType="com.dnu.team.advertise.pro.model.User">
+        select UPDATE_USER(#{id}, #{firstName}, #{lastName}, #{middleName}, #{contacts.city}, #{contacts.postCode},
+        #{contacts.street}, #{contacts.house}, #{contacts.flat}, #{contacts.phone}, #{contacts.email}, #{credentials.password})
     </update>
 
-    <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.User" statementType="CALLABLE">
-        {select DELETE_USER(#{id})}
+    <delete id="delete" parameterType="com.dnu.team.advertise.pro.model.User">
+        select DELETE_USER(#{id})
     </delete>
 
 </mapper>

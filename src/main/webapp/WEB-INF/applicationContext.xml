@@ -12,4 +12,5 @@
 
     <import resource="classpath:config/mybatis-config.xml"/>
     <import resource="classpath:config/spring-security.xml"/>
+    <import resource="classpath:config/redis-config.xml"/>
 </beans>

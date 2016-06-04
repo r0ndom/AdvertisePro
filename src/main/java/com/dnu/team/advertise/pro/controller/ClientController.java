@@ -8,10 +8,14 @@ import com.dnu.team.advertise.pro.model.Mark;
 import com.dnu.team.advertise.pro.model.Order;
 import com.dnu.team.advertise.pro.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +27,9 @@ public class ClientController {
     private static final String INFO = "client/info";
     private static final String MAKE_ORDER = "client/makeOrder";
     private static final String ORDER_INFO = "client/orderInfo";
+
+    @Autowired
+    private SessionService sessionService;
 
     @Autowired
     UserService userService;
@@ -49,7 +56,8 @@ public class ClientController {
     ItemToItem itemToItem;
 
     @RequestMapping(method = RequestMethod.GET)
-    ModelAndView show() {
+    ModelAndView show(HttpServletResponse response) {
+        createSession(response);
         ModelAndView mav = new ModelAndView();
         mav.setViewName(CLIENT);
         mav.addObject("clientLogin", userService.getCurrentUser().getCredentials().getLogin());
@@ -97,6 +105,11 @@ public class ClientController {
     String deleteOrder(@PathVariable("id") String id) {
         orderDao.delete(id);
         return "redirect:/client/info";
+    }
+
+    private void createSession(HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        sessionService.createSession(auth, response);
     }
 
 }
